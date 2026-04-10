@@ -2688,5 +2688,251 @@ document.addEventListener('keydown', function(e) {
 })();
 
 </script>
+<script>
+
+/* ════════════════════════════════════════
+   ANNOTATION TOOLBAR — Pointer + Draw + Erase
+════════════════════════════════════════ */
+(function() {
+
+  /* ── TOOLBAR HTML ── */
+  var toolbar = document.createElement('div');
+  toolbar.id = 'da-toolbar';
+  toolbar.innerHTML =
+    '<button id="da-btn-pointer" class="da-tool-btn da-tool-active" title="Pointer (P)" onclick="DATool.set(\'pointer\')">' +
+      '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2L13 8L8 9.5L6 14L3 2Z" fill="currentColor"/></svg>' +
+    '</button>' +
+    '<button id="da-btn-pen" class="da-tool-btn" title="Kalem — Çiz (D)" onclick="DATool.set(\'pen\')">' +
+      '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M11 2L14 5L5 14H2V11L11 2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>' +
+    '</button>' +
+    '<button id="da-btn-arrow" class="da-tool-btn" title="Ok — İşaretle (A)" onclick="DATool.set(\'arrow\')">' +
+      '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="3" y1="13" x2="13" y2="3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><polyline points="7,3 13,3 13,9" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" fill="none"/></svg>' +
+    '</button>' +
+    '<div style="width:1px;height:20px;background:rgba(20,22,122,.15);margin:0 2px"></div>' +
+    '<button id="da-btn-red"    class="da-color-btn da-color-active" style="background:#E63946" onclick="DATool.setColor(\'#E63946\')" title="Kırmızı"></button>' +
+    '<button id="da-btn-yellow" class="da-color-btn" style="background:#F4A261" onclick="DATool.setColor(\'#F4A261\')" title="Turuncu"></button>' +
+    '<button id="da-btn-green"  class="da-color-btn" style="background:#00A651" onclick="DATool.setColor(\'#00A651\')" title="Yeşil"></button>' +
+    '<button id="da-btn-navy"   class="da-color-btn" style="background:#14167A" onclick="DATool.setColor(\'#14167A\')" title="Lacivert"></button>' +
+    '<div style="width:1px;height:20px;background:rgba(20,22,122,.15);margin:0 2px"></div>' +
+    '<button class="da-tool-btn" title="Geri Al (Ctrl+Z)" onclick="DATool.undo()">' +
+      '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8C3 5.2 5.2 3 8 3C10.8 3 13 5.2 13 8C13 10.8 10.8 13 8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><polyline points="3,4 3,8 7,8" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" fill="none"/></svg>' +
+    '</button>' +
+    '<button class="da-tool-btn" title="Tümünü Sil (X)" onclick="DATool.clearAll()">' +
+      '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="3" y1="3" x2="13" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="13" y1="3" x2="3" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>' +
+    '</button>';
+  document.body.appendChild(toolbar);
+
+  /* ── SVG CANVAS ── */
+  var svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+  svg.id = 'da-canvas';
+  svg.setAttribute('xmlns','http://www.w3.org/2000/svg');
+  document.body.appendChild(svg);
+
+  /* ── SPOTLIGHT CURSOR ── */
+  var spot = document.createElement('div');
+  spot.id = 'da-spot';
+  document.body.appendChild(spot);
+
+  /* ── STYLES ── */
+  var style = document.createElement('style');
+  style.textContent = `
+    #da-toolbar {
+      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+      display: flex; align-items: center; gap: 4px;
+      background: white; border: 1px solid #E2E4F0;
+      border-radius: 40px; padding: 6px 10px;
+      box-shadow: 0 4px 24px rgba(20,22,122,.14);
+      z-index: 10000; user-select: none;
+    }
+    .da-tool-btn {
+      width: 32px; height: 32px; border: none; background: transparent;
+      border-radius: 8px; cursor: pointer; display: flex; align-items: center;
+      justify-content: center; color: #3A3C6E; transition: all .15s;
+    }
+    .da-tool-btn:hover { background: #F4F5FC; color: #14167A; }
+    .da-tool-btn.da-tool-active { background: #14167A; color: white; }
+    .da-color-btn {
+      width: 18px; height: 18px; border: 2px solid transparent;
+      border-radius: 50%; cursor: pointer; transition: all .15s;
+    }
+    .da-color-btn.da-color-active { border-color: #14167A; transform: scale(1.2); }
+    #da-canvas {
+      position: fixed; inset: 0; z-index: 9990;
+      pointer-events: none; width: 100%; height: 100%;
+    }
+    #da-canvas.da-drawing { pointer-events: all; cursor: crosshair !important; }
+    #da-canvas.da-arrowing { pointer-events: all; cursor: crosshair !important; }
+    #da-spot {
+      position: fixed; width: 28px; height: 28px;
+      border-radius: 50%; pointer-events: none; z-index: 9999;
+      transform: translate(-50%,-50%);
+      display: none;
+      background: rgba(230,57,70,.25);
+      border: 2px solid #E63946;
+      transition: transform .1s;
+      box-shadow: 0 0 0 4px rgba(230,57,70,.1);
+    }
+    body.da-pointer-mode { cursor: none !important; }
+    body.da-pointer-mode * { cursor: none !important; }
+  `;
+  document.head.appendChild(style);
+
+  /* ── STATE ── */
+  var state = {
+    tool: 'pointer',
+    color: '#E63946',
+    drawing: false,
+    currentPath: null,
+    currentArrow: null,
+    arrowStart: null,
+    paths: [],
+  };
+
+  /* ── TOOL CONTROLLER ── */
+  window.DATool = {
+    set: function(tool) {
+      state.tool = tool;
+      document.querySelectorAll('.da-tool-btn').forEach(function(b){ b.classList.remove('da-tool-active'); });
+      var btn = document.getElementById('da-btn-' + tool);
+      if (btn) btn.classList.add('da-tool-active');
+
+      svg.classList.remove('da-drawing','da-arrowing');
+      document.body.classList.remove('da-pointer-mode');
+      spot.style.display = 'none';
+
+      if (tool === 'pointer') {
+        document.body.classList.add('da-pointer-mode');
+        spot.style.display = 'block';
+      } else if (tool === 'pen') {
+        svg.classList.add('da-drawing');
+      } else if (tool === 'arrow') {
+        svg.classList.add('da-arrowing');
+      }
+    },
+
+    setColor: function(c) {
+      state.color = c;
+      document.querySelectorAll('.da-color-btn').forEach(function(b){ b.classList.remove('da-color-active'); });
+      // find matching button
+      var btns = document.querySelectorAll('.da-color-btn');
+      btns.forEach(function(b){ if(b.style.background === c || b.style.backgroundColor === c) b.classList.add('da-color-active'); });
+      spot.style.borderColor = c;
+      spot.style.background = c.replace(')', ',.2)').replace('rgb(','rgba(').replace('#','');
+      // rebuild spot color properly
+      spot.style.background = c + '33';
+      spot.style.borderColor = c;
+    },
+
+    undo: function() {
+      if (state.paths.length === 0) return;
+      var last = state.paths.pop();
+      if (last && last.parentNode) last.remove();
+    },
+
+    clearAll: function() {
+      state.paths.forEach(function(el){ if(el && el.parentNode) el.remove(); });
+      state.paths = [];
+    }
+  };
+
+  /* ── MOUSE / TOUCH EVENTS ON SVG ── */
+  function getPos(e) {
+    var touch = e.touches ? e.touches[0] : e;
+    return { x: touch.clientX, y: touch.clientY };
+  }
+
+  svg.addEventListener('mousedown', startDraw);
+  svg.addEventListener('touchstart', startDraw, { passive: false });
+
+  function startDraw(e) {
+    e.preventDefault();
+    var pos = getPos(e);
+    state.drawing = true;
+
+    if (state.tool === 'pen') {
+      var path = document.createElementNS('http://www.w3.org/2000/svg','path');
+      path.setAttribute('stroke', state.color);
+      path.setAttribute('stroke-width', '3');
+      path.setAttribute('stroke-linecap', 'round');
+      path.setAttribute('stroke-linejoin', 'round');
+      path.setAttribute('fill', 'none');
+      path.setAttribute('d', 'M ' + pos.x + ' ' + pos.y);
+      path.style.filter = 'drop-shadow(0 1px 2px rgba(0,0,0,.15))';
+      svg.appendChild(path);
+      state.currentPath = path;
+      state.paths.push(path);
+
+    } else if (state.tool === 'arrow') {
+      state.arrowStart = pos;
+      // temp line
+      var line = document.createElementNS('http://www.w3.org/2000/svg','line');
+      line.setAttribute('stroke', state.color);
+      line.setAttribute('stroke-width','2.5');
+      line.setAttribute('stroke-linecap','round');
+      line.setAttribute('x1', pos.x); line.setAttribute('y1', pos.y);
+      line.setAttribute('x2', pos.x); line.setAttribute('y2', pos.y);
+      var markerId = 'da-arrow-' + Date.now();
+      var defs = document.createElementNS('http://www.w3.org/2000/svg','defs');
+      defs.innerHTML = '<marker id="' + markerId + '" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="' + state.color + '"/></marker>';
+      svg.appendChild(defs);
+      line.setAttribute('marker-end','url(#' + markerId + ')');
+      svg.appendChild(line);
+      state.currentArrow = { line: line, defs: defs };
+      state.paths.push(line);
+      state.paths.push(defs);
+    }
+  }
+
+  document.addEventListener('mousemove', onMove);
+  document.addEventListener('touchmove', onMove, { passive: false });
+
+  function onMove(e) {
+    var pos = getPos(e);
+
+    // Spotlight
+    if (state.tool === 'pointer') {
+      spot.style.left = pos.x + 'px';
+      spot.style.top  = pos.y + 'px';
+    }
+
+    if (!state.drawing) return;
+    e.preventDefault();
+
+    if (state.tool === 'pen' && state.currentPath) {
+      var d = state.currentPath.getAttribute('d');
+      state.currentPath.setAttribute('d', d + ' L ' + pos.x + ' ' + pos.y);
+
+    } else if (state.tool === 'arrow' && state.currentArrow) {
+      state.currentArrow.line.setAttribute('x2', pos.x);
+      state.currentArrow.line.setAttribute('y2', pos.y);
+    }
+  }
+
+  document.addEventListener('mouseup', endDraw);
+  document.addEventListener('touchend', endDraw);
+
+  function endDraw() {
+    state.drawing = false;
+    state.currentPath = null;
+    state.currentArrow = null;
+  }
+
+  /* ── KEYBOARD SHORTCUTS ── */
+  document.addEventListener('keydown', function(e) {
+    var tag = document.activeElement ? document.activeElement.tagName : '';
+    if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+    if (e.key === 'p' || e.key === 'P') DATool.set('pointer');
+    if (e.key === 'd' || e.key === 'D') DATool.set('pen');
+    if (e.key === 'a' || e.key === 'A') DATool.set('arrow');
+    if (e.key === 'x' || e.key === 'X') DATool.clearAll();
+    if ((e.ctrlKey || e.metaKey) && e.key === 'z') { e.preventDefault(); DATool.undo(); }
+  });
+
+  /* Init with pointer */
+  DATool.set('pointer');
+
+})();
+
+</script>
 </body>
 </html>
