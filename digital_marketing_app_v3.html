@@ -1741,11 +1741,14 @@
             <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px">
 
               <!-- Video 1: Powdery Mildew -->
-              <div style="border-radius:var(--da-r,10px);overflow:hidden;background:#000;border:1px solid var(--da-border,#E2E4F0);display:flex;flex-direction:column">
+              <div data-vid="1" style="border-radius:var(--da-r,10px);overflow:hidden;background:#000;border:1px solid var(--da-border,#E2E4F0);display:flex;flex-direction:column">
                 <div style="padding:9px 12px;background:var(--da-navyL,#EEEEF8);display:flex;align-items:center;gap:6px;border-bottom:1px solid var(--da-border,#E2E4F0);flex-shrink:0">
                   <span style="font-size:13px">🌿</span>
                   <span style="font-size:11px;font-weight:700;color:var(--da-navy,#14167A)">Powdery Mildew</span>
-                  <a href="https://www.instagram.com/syngentaturkiye/" target="_blank" style="margin-left:auto;font-size:10px;color:var(--da-green2,#007A3C);font-weight:600;text-decoration:none;white-space:nowrap">↗ IG</a>
+                  <div style="display:flex;align-items:center;gap:8px;margin-left:auto">
+                    <button onclick="daFullscreen(this.closest('[data-vid]').querySelector('video'))" style="background:none;border:none;cursor:pointer;padding:2px 4px;color:var(--da-navy,#14167A);font-size:13px;line-height:1" title="Fullscreen (F)">⛶</button>
+                    <a href="https://www.instagram.com/syngentaturkiye/" target="_blank" style="font-size:10px;color:var(--da-green2,#007A3C);font-weight:600;text-decoration:none;white-space:nowrap">↗ IG</a>
+                  </div>
                 </div>
                 <video controls preload="none"
                   style="width:100%;flex:1;object-fit:contain;background:#000;display:block;max-height:480px"
@@ -1755,11 +1758,14 @@
               </div>
 
               <!-- Video 2: Downy Mildew -->
-              <div style="border-radius:var(--da-r,10px);overflow:hidden;background:#000;border:1px solid var(--da-border,#E2E4F0);display:flex;flex-direction:column">
+              <div data-vid="2" style="border-radius:var(--da-r,10px);overflow:hidden;background:#000;border:1px solid var(--da-border,#E2E4F0);display:flex;flex-direction:column">
                 <div style="padding:9px 12px;background:var(--da-navyL,#EEEEF8);display:flex;align-items:center;gap:6px;border-bottom:1px solid var(--da-border,#E2E4F0);flex-shrink:0">
                   <span style="font-size:13px">🌿</span>
                   <span style="font-size:11px;font-weight:700;color:var(--da-navy,#14167A)">Downy Mildew</span>
-                  <a href="https://www.instagram.com/syngentaturkiye/" target="_blank" style="margin-left:auto;font-size:10px;color:var(--da-green2,#007A3C);font-weight:600;text-decoration:none;white-space:nowrap">↗ IG</a>
+                  <div style="display:flex;align-items:center;gap:8px;margin-left:auto">
+                    <button onclick="daFullscreen(this.closest('[data-vid]').querySelector('video'))" style="background:none;border:none;cursor:pointer;padding:2px 4px;color:var(--da-navy,#14167A);font-size:13px;line-height:1" title="Fullscreen (F)">⛶</button>
+                    <a href="https://www.instagram.com/syngentaturkiye/" target="_blank" style="font-size:10px;color:var(--da-green2,#007A3C);font-weight:600;text-decoration:none;white-space:nowrap">↗ IG</a>
+                  </div>
                 </div>
                 <video controls preload="none"
                   style="width:100%;flex:1;object-fit:contain;background:#000;display:block;max-height:480px"
@@ -1769,11 +1775,14 @@
               </div>
 
               <!-- Video 3: Rust -->
-              <div style="border-radius:var(--da-r,10px);overflow:hidden;background:#000;border:1px solid var(--da-border,#E2E4F0);display:flex;flex-direction:column">
+              <div data-vid="3" style="border-radius:var(--da-r,10px);overflow:hidden;background:#000;border:1px solid var(--da-border,#E2E4F0);display:flex;flex-direction:column">
                 <div style="padding:9px 12px;background:var(--da-navyL,#EEEEF8);display:flex;align-items:center;gap:6px;border-bottom:1px solid var(--da-border,#E2E4F0);flex-shrink:0">
                   <span style="font-size:13px">🌾</span>
                   <span style="font-size:11px;font-weight:700;color:var(--da-navy,#14167A)">Rust</span>
-                  <a href="https://www.instagram.com/syngentaturkiye/" target="_blank" style="margin-left:auto;font-size:10px;color:var(--da-green2,#007A3C);font-weight:600;text-decoration:none;white-space:nowrap">↗ IG</a>
+                  <div style="display:flex;align-items:center;gap:8px;margin-left:auto">
+                    <button onclick="daFullscreen(this.closest('[data-vid]').querySelector('video'))" style="background:none;border:none;cursor:pointer;padding:2px 4px;color:var(--da-navy,#14167A);font-size:13px;line-height:1" title="Fullscreen (F)">⛶</button>
+                    <a href="https://www.instagram.com/syngentaturkiye/" target="_blank" style="font-size:10px;color:var(--da-green2,#007A3C);font-weight:600;text-decoration:none;white-space:nowrap">↗ IG</a>
+                  </div>
                 </div>
                 <video controls preload="none"
                   style="width:100%;flex:1;object-fit:contain;background:#000;display:block;max-height:480px"
@@ -3157,5 +3166,74 @@ document.addEventListener('keydown', function(e) {
 })();
 
 </script>
+
+<script>
+/* ── FULLSCREEN VIDEO ── */
+function daFullscreen(videoEl) {
+  if (!videoEl) return;
+
+  /* Try native fullscreen first */
+  var req = videoEl.requestFullscreen || videoEl.webkitRequestFullscreen || videoEl.mozRequestFullScreen || videoEl.msRequestFullscreen;
+  if (req) {
+    req.call(videoEl);
+    return;
+  }
+
+  /* Fallback: custom overlay modal */
+  var overlay = document.createElement('div');
+  overlay.id = 'da-fs-overlay';
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:99999;display:flex;align-items:center;justify-content:center;animation:da-fs-in .2s ease';
+
+  var clone = videoEl.cloneNode(true);
+  clone.style.cssText = 'max-width:95vw;max-height:92vh;border-radius:8px;outline:none';
+  clone.controls = true;
+  clone.currentTime = videoEl.currentTime;
+  clone.play();
+
+  var closeBtn = document.createElement('button');
+  closeBtn.innerHTML = '✕';
+  closeBtn.style.cssText = 'position:absolute;top:16px;right:20px;background:rgba(255,255,255,.15);border:none;color:white;font-size:18px;width:36px;height:36px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s';
+  closeBtn.onmouseover = function(){ this.style.background='rgba(255,255,255,.3)'; };
+  closeBtn.onmouseout  = function(){ this.style.background='rgba(255,255,255,.15)'; };
+
+  var escHint = document.createElement('div');
+  escHint.style.cssText = 'position:absolute;bottom:16px;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(255,255,255,.35);font-family:monospace;letter-spacing:.08em';
+  escHint.textContent = 'Press ESC to close';
+
+  function close() {
+    videoEl.currentTime = clone.currentTime;
+    overlay.remove();
+    document.removeEventListener('keydown', onKey);
+  }
+  function onKey(e) { if (e.key === 'Escape') close(); }
+
+  closeBtn.onclick = close;
+  overlay.onclick = function(e){ if(e.target === overlay) close(); };
+  document.addEventListener('keydown', onKey);
+
+  overlay.appendChild(clone);
+  overlay.appendChild(closeBtn);
+  overlay.appendChild(escHint);
+  document.body.appendChild(overlay);
+}
+
+/* Also handle native fullscreen ESC (browser handles it natively) */
+/* Keyboard shortcut: F key when hovering over OT panel */
+document.addEventListener('keydown', function(e) {
+  if (e.key !== 'f' && e.key !== 'F') return;
+  var tag = document.activeElement ? document.activeElement.tagName : '';
+  if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+  /* Find first visible video in active panel */
+  var activePanel = document.querySelector('.DMApp26-panel--active');
+  if (!activePanel) return;
+  var vid = activePanel.querySelector('video');
+  if (vid) daFullscreen(vid);
+});
+</script>
+
+<style>
+@keyframes da-fs-in { from { opacity:0; } to { opacity:1; } }
+</style>
+
 </body>
 </html>
