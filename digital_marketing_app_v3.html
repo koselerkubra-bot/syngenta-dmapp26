@@ -1,7 +1,14 @@
 <!-- DMApp26 v4b :: Self-contained Drupal block (Free HTML format) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js">
+
+/* ════════════════════════════════════════
+   BENCHMARK — standalone, no dependencies
+════════════════════════════════════════ */
+
+
+</script>
 <style>
 /*
   ============================================================
@@ -1236,18 +1243,7 @@
         <span class="DMApp26-ni-ic">🔍</span>
         <span>SEO Analysis</span>
       </div>
-      <div class="DMApp26-sb-group">Interactive</div>
-      <div class="DMApp26-ni" data-panel="benchmark" onclick="DMApp26.go(this)">
-        <span class="DMApp26-ni-ic">📐</span>
-        <span>Benchmark</span>
-        <span class="DMApp26-ni-badge">Live</span>
-      </div>
-      <div class="DMApp26-ni" data-panel="ai" onclick="DMApp26.go(this)">
-        <span class="DMApp26-ni-ic">🤖</span>
-        <span>AI Assistant</span>
-        <span class="DMApp26-ni-badge">New</span>
-      </div>
-    </nav>
+</nav>
     <div class="DMApp26-sb-foot">
       <div class="DMApp26-int-badge">Internal Use Only</div>
     </div>
@@ -1262,7 +1258,23 @@
         <div class="DMApp26-tb-title" id="DMApp26-tb-t">Overview</div>
         <div class="DMApp26-tb-crumb" id="DMApp26-tb-c">Syngenta Türkiye · Digital Marketing 2025–2026 Performance &amp; Strategy Review</div>
       </div>
-      <div class="DMApp26-tb-r">
+      <div class="DMApp26-tb-r" style="display:flex;align-items:center;gap:10px">
+        <!-- SEARCH -->
+        <div style="position:relative" id="DMApp26-search-wrap">
+          <input
+            type="text"
+            id="DMApp26-search-input"
+            placeholder="🔍  Ara... (örn: CTR, Object Talk)"
+            autocomplete="off"
+            style="width:260px;padding:7px 14px 7px 14px;border:1px solid var(--da-border,#E2E4F0);border-radius:20px;font-family:inherit;font-size:12px;outline:none;background:var(--da-bg,#F4F5FC);color:var(--da-text,#0F1035);transition:border-color .2s,width .3s"
+            onfocus="this.style.borderColor='var(--da-navy,#14167A)';this.style.width='320px'"
+            onblur="setTimeout(function(){document.getElementById('DMApp26-search-results').style.display='none'},200);this.style.borderColor='var(--da-border,#E2E4F0)';this.style.width='260px'"
+            oninput="DMApp26Search.query(this.value)"
+          >
+          <div id="DMApp26-search-results"
+            style="display:none;position:absolute;top:calc(100% + 6px);right:0;width:360px;background:white;border:1px solid var(--da-border,#E2E4F0);border-radius:12px;box-shadow:0 8px 32px rgba(20,22,122,.13);z-index:200;overflow:hidden;max-height:400px;overflow-y:auto">
+          </div>
+        </div>
         <div class="DMApp26-live">2025–2026 Review</div>
       </div>
     </div>
@@ -1830,165 +1842,6 @@
 
 
       <!-- ══════════════════════════════════════
-           PANEL: LIVE BENCHMARK
-      ══════════════════════════════════════ -->
-      <div class="DMApp26-panel" id="DMApp26-panel-benchmark">
-        <div class="DMApp26-sh">
-          <div class="DMApp26-sh-ey">Interactive · Live Comparator</div>
-          <h2>Benchmark Karşılaştırıcı</h2>
-          <p>Türkiye metriklerini AMEA ortalaması ve sektör benchmarklarıyla anlık karşılaştır</p>
-        </div>
-
-        <!-- Metric selector -->
-        <div class="DMApp26-card DMApp26-mb" id="DMApp26-bm-card">
-          <div class="DMApp26-ct">Metrik Seç</div>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px">
-            <button class="DMApp26-bm-btn DMApp26-bm-btn--active" data-metric="engagement" onclick="DMApp26.selectMetric(this)">Engagement Rate</button>
-            <button class="DMApp26-bm-btn" data-metric="ctr" onclick="DMApp26.selectMetric(this)">CTR</button>
-            <button class="DMApp26-bm-btn" data-metric="sitehealth" onclick="DMApp26.selectMetric(this)">Site Health</button>
-            <button class="DMApp26-bm-btn" data-metric="aisearch" onclick="DMApp26.selectMetric(this)">AI Search Health</button>
-            <button class="DMApp26-bm-btn" data-metric="dmmaturity" onclick="DMApp26.selectMetric(this)">DM Maturity</button>
-            <button class="DMApp26-bm-btn" data-metric="budget" onclick="DMApp26.selectMetric(this)">DM Budget %</button>
-          </div>
-
-          <!-- Dynamic comparison display -->
-          <div id="DMApp26-bm-display">
-            <!-- Filled by JS -->
-          </div>
-        </div>
-
-        <!-- Country comparisons -->
-        <div class="DMApp26-g2 DMApp26-mb">
-          <div class="DMApp26-card">
-            <div class="DMApp26-ct">AMEA Lighthouse — Site Health Sıralaması</div>
-            <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px" id="DMApp26-bm-bars">
-              <!-- Filled by JS -->
-            </div>
-          </div>
-          <div class="DMApp26-card">
-            <div class="DMApp26-ct">Türkiye Performans Özeti</div>
-            <div class="DMApp26-g2" style="gap:8px;margin-top:8px">
-              <div class="DMApp26-kpi DMApp26-klg"><div class="DMApp26-k-num">5.4%</div><div class="DMApp26-k-lbl">CTR</div><div class="DMApp26-k-sub">AMEA avg ~3.8%</div></div>
-              <div class="DMApp26-kpi DMApp26-kln"><div class="DMApp26-k-num">85</div><div class="DMApp26-k-lbl">Site Health</div><div class="DMApp26-k-sub">AMEA avg ~79</div></div>
-              <div class="DMApp26-kpi DMApp26-klt"><div class="DMApp26-k-num">85</div><div class="DMApp26-k-lbl">AI Search Health</div><div class="DMApp26-k-sub">AMEA avg ~68</div></div>
-              <div class="DMApp26-kpi DMApp26-klo"><div class="DMApp26-k-num">1.88%</div><div class="DMApp26-k-lbl">Engagement Rate</div><div class="DMApp26-k-sub">2025 baseline: 0.58%</div></div>
-              <div class="DMApp26-kpi DMApp26-klg"><div class="DMApp26-k-num">2.6</div><div class="DMApp26-k-lbl">DM Maturity</div><div class="DMApp26-k-sub">AMEA avg: 1.8</div></div>
-              <div class="DMApp26-kpi DMApp26-klb"><div class="DMApp26-k-num">15%</div><div class="DMApp26-k-lbl">DM Budget / A&P</div><div class="DMApp26-k-sub">AMEA avg: 22%</div></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Interactive slider -->
-        <div class="DMApp26-card">
-          <div class="DMApp26-ct">Hedef Simülatörü — 2026 Senaryosu</div>
-          <p style="font-size:13px;color:var(--da-text3,#8385A8);margin-bottom:20px">Slider'ları hareket ettirerek 2026 hedeflerinin AMEA sıralamasına etkisini gör</p>
-          <div style="display:flex;flex-direction:column;gap:20px" id="DMApp26-sliders">
-            <div class="DMApp26-slider-row">
-              <div style="display:flex;justify-content:space-between;margin-bottom:6px">
-                <span style="font-size:13px;font-weight:600;color:var(--da-text2,#3A3C6E)">Site Health Hedefi</span>
-                <span style="font-family:'DM Mono',monospace;font-size:13px;font-weight:700;color:var(--da-navy,#14167A)" id="DMApp26-sl-sitehealth-val">85</span>
-              </div>
-              <input type="range" min="60" max="100" value="85" id="DMApp26-sl-sitehealth" class="DMApp26-range" oninput="DMApp26.updateSlider('sitehealth',this.value)">
-              <div style="display:flex;justify-content:space-between;margin-top:4px;font-family:'DM Mono',monospace;font-size:10px;color:var(--da-text3,#8385A8)">
-                <span>Mevcut: 85</span><span id="DMApp26-sl-sitehealth-rank" style="color:var(--da-green,#00A651);font-weight:700">#2 AMEA</span>
-              </div>
-            </div>
-            <div class="DMApp26-slider-row">
-              <div style="display:flex;justify-content:space-between;margin-bottom:6px">
-                <span style="font-size:13px;font-weight:600;color:var(--da-text2,#3A3C6E)">AI Search Health Hedefi</span>
-                <span style="font-family:'DM Mono',monospace;font-size:13px;font-weight:700;color:var(--da-navy,#14167A)" id="DMApp26-sl-aisearch-val">85</span>
-              </div>
-              <input type="range" min="50" max="100" value="85" id="DMApp26-sl-aisearch" class="DMApp26-range" oninput="DMApp26.updateSlider('aisearch',this.value)">
-              <div style="display:flex;justify-content:space-between;margin-top:4px;font-family:'DM Mono',monospace;font-size:10px;color:var(--da-text3,#8385A8)">
-                <span>Mevcut: 85</span><span id="DMApp26-sl-aisearch-rank" style="color:var(--da-green,#00A651);font-weight:700">#2 AMEA</span>
-              </div>
-            </div>
-            <div class="DMApp26-slider-row">
-              <div style="display:flex;justify-content:space-between;margin-bottom:6px">
-                <span style="font-size:13px;font-weight:600;color:var(--da-text2,#3A3C6E)">DM Maturity Hedefi</span>
-                <span style="font-family:'DM Mono',monospace;font-size:13px;font-weight:700;color:var(--da-navy,#14167A)" id="DMApp26-sl-maturity-val">2.6</span>
-              </div>
-              <input type="range" min="10" max="50" value="26" id="DMApp26-sl-maturity" class="DMApp26-range" oninput="DMApp26.updateSlider('maturity',this.value)">
-              <div style="display:flex;justify-content:space-between;margin-top:4px;font-family:'DM Mono',monospace;font-size:10px;color:var(--da-text3,#8385A8)">
-                <span>Mevcut: 2.6 (2026 target: 2.8)</span><span id="DMApp26-sl-maturity-rank" style="color:var(--da-green,#00A651);font-weight:700">#3 AMEA</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ══════════════════════════════════════
-           PANEL: AI ASSISTANT
-      ══════════════════════════════════════ -->
-      <div class="DMApp26-panel" id="DMApp26-panel-ai">
-        <div class="DMApp26-sh">
-          <div class="DMApp26-sh-ey">Powered by Claude · Anthropic</div>
-          <h2>Digital Marketing<br>AI Assistant</h2>
-          <p>Türkiye CP dijital pazarlama verilerine dayalı sorularını yanıtlar — Türkçe veya İngilizce</p>
-        </div>
-
-        <div class="DMApp26-g32 DMApp26-mb">
-          <!-- Chat window -->
-          <div class="DMApp26-card" style="display:flex;flex-direction:column;height:520px;padding:0;overflow:hidden">
-            <!-- Messages -->
-            <div id="DMApp26-chat-msgs" style="flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:12px">
-              <!-- Welcome message -->
-              <div class="DMApp26-msg DMApp26-msg--ai">
-                <div class="DMApp26-msg-bubble">
-                  Merhaba! Ben Syngenta Türkiye dijital marketing verilerini bilen bir asistanım. 👋<br><br>
-                  Sana şunları sorabilirsin:<br>
-                  • Object Talk kampanyasının sonuçları neydi?<br>
-                  • Türkiye AMEA'da kaçıncı sırada?<br>
-                  • 2026 yönetmeliği stratejiyi nasıl etkiledi?<br>
-                  • Engagement rate ne kadar arttı?
-                </div>
-              </div>
-            </div>
-            <!-- Input -->
-            <div style="padding:16px;border-top:1px solid var(--da-border,#E2E4F0);display:flex;gap:10px;background:var(--da-bg,#F4F5FC)">
-              <input
-                id="DMApp26-chat-input"
-                type="text"
-                placeholder="Sorunuzu yazın... (Türkçe veya İngilizce)"
-                style="flex:1;padding:10px 14px;border:1px solid var(--da-border,#E2E4F0);border-radius:8px;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;outline:none;background:white;color:var(--da-text,#0F1035)"
-                onkeydown="if(event.key==='Enter')DMApp26.sendChat()"
-              >
-              <button
-                onclick="DMApp26.sendChat()"
-                id="DMApp26-chat-send"
-                style="padding:10px 18px;background:var(--da-navy,#14167A);color:white;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:background .2s;white-space:nowrap"
-                onmouseover="this.style.background='#1E21A0'" onmouseout="this.style.background='var(--da-navy,#14167A)'"
-              >Gönder ↑</button>
-            </div>
-          </div>
-
-          <!-- Suggested questions + info -->
-          <div class="DMApp26-stack">
-            <div class="DMApp26-card">
-              <div class="DMApp26-ct">Önerilen Sorular</div>
-              <div style="display:flex;flex-direction:column;gap:6px;margin-top:4px">
-                <button class="DMApp26-suggest-btn" onclick="DMApp26.askSuggestion(this)">Object Talk kampanyasının sonuçları neydi?</button>
-                <button class="DMApp26-suggest-btn" onclick="DMApp26.askSuggestion(this)">Türkiye AMEA'da SEO'da kaçıncı?</button>
-                <button class="DMApp26-suggest-btn" onclick="DMApp26.askSuggestion(this)">2026 yönetmeliği stratejiyi nasıl değiştirdi?</button>
-                <button class="DMApp26-suggest-btn" onclick="DMApp26.askSuggestion(this)">Biologicals kampanyasının bütçesi neydi?</button>
-                <button class="DMApp26-suggest-btn" onclick="DMApp26.askSuggestion(this)">DM Maturity skorumuz nedir ve 2026 hedefi ne?</button>
-                <button class="DMApp26-suggest-btn" onclick="DMApp26.askSuggestion(this)">Magris kampanyasından ne öğrendik?</button>
-                <button class="DMApp26-suggest-btn" onclick="DMApp26.askSuggestion(this)">What was our engagement rate improvement?</button>
-                <button class="DMApp26-suggest-btn" onclick="DMApp26.askSuggestion(this)">Which capability needs the most improvement?</button>
-              </div>
-            </div>
-            <div class="DMApp26-card" style="background:var(--da-navyL,#EEEEF8);border-color:rgba(20,22,122,.15)">
-              <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--da-navy,#14167A);margin-bottom:8px">Hakkında</div>
-              <p style="font-size:12px;color:var(--da-text2,#3A3C6E);line-height:1.6">Bu asistan Syngenta Türkiye 2025–2026 dijital marketing verilerini biliyor: NPI kampanyaları, Biologicals, Magris, Object Talk, SEO metrikleri, DM Maturity sonuçları ve 2026–2027 roadmap.</p>
-              <p style="font-size:11px;color:var(--da-text3,#8385A8);margin-top:8px">Powered by Claude (Anthropic) · Internal Use Only</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /DMApp26-cnt -->
-
-      <!-- ══════════════════════════════════════
            PANEL: DM MATURITY
       ══════════════════════════════════════ -->
       <div class="DMApp26-panel" id="DMApp26-panel-dmmm">
@@ -1997,114 +1850,54 @@
           <h2>Turkey CP — Digital Marketing<br>Maturity Results</h2>
           <p>Overall Score 2.6 · 3rd Highest in AMEA · Budget % of A&amp;P: 15%</p>
         </div>
-
-        <!-- KPIs -->
         <div class="DMApp26-g4 DMApp26-mb">
-          <div class="DMApp26-kpi DMApp26-kg" data-ic="🏅">
-            <div class="DMApp26-k-num">2.6</div>
-            <div class="DMApp26-k-lbl">Overall Score 2025</div>
-            <div class="DMApp26-k-sub">3rd Highest in AMEA</div>
-          </div>
-          <div class="DMApp26-kpi DMApp26-kln">
-            <div class="DMApp26-k-num">2.8</div>
-            <div class="DMApp26-k-lbl">2026 Target</div>
-            <div class="DMApp26-k-sub">+0.2 improvement planned</div>
-          </div>
-          <div class="DMApp26-kpi DMApp26-ko" data-ic="💰">
-            <div class="DMApp26-k-num">15%</div>
-            <div class="DMApp26-k-lbl">DM Spend / A&amp;P 2025</div>
-            <div class="DMApp26-k-sub">2023: 8% → 2024: 12% → 2025: 15%</div>
-          </div>
-          <div class="DMApp26-kpi DMApp26-klt">
-            <div class="DMApp26-k-num">40,500</div>
-            <div class="DMApp26-k-lbl">Grower Contacts</div>
-            <div class="DMApp26-k-sub">Grower data collected</div>
-          </div>
+          <div class="DMApp26-kpi DMApp26-kg" data-ic="🏅"><div class="DMApp26-k-num">2.6</div><div class="DMApp26-k-lbl">Overall Score 2025</div><div class="DMApp26-k-sub">3rd Highest in AMEA</div></div>
+          <div class="DMApp26-kpi DMApp26-kln"><div class="DMApp26-k-num">2.8</div><div class="DMApp26-k-lbl">2026 Target</div><div class="DMApp26-k-sub">+0.2 improvement planned</div></div>
+          <div class="DMApp26-kpi DMApp26-ko" data-ic="💰"><div class="DMApp26-k-num">15%</div><div class="DMApp26-k-lbl">DM Spend / A&amp;P 2025</div><div class="DMApp26-k-sub">2023: 8% → 2024: 12% → 2025: 15%</div></div>
+          <div class="DMApp26-kpi DMApp26-klt"><div class="DMApp26-k-num">40,500</div><div class="DMApp26-k-lbl">Grower Contacts</div></div>
         </div>
-
         <div class="DMApp26-g2 DMApp26-mb">
-          <!-- Turkey Capability Table -->
           <div class="DMApp26-card">
             <div class="DMApp26-ct">Turkey CP — Maturity Results &amp; 2026 Targets</div>
             <div class="DMApp26-tw DMApp26-mt">
               <table>
-                <thead>
-                  <tr>
-                    <th>DM Capability</th>
-                    <th>2025 Score</th>
-                    <th>2026 Target</th>
-                    <th>Gap</th>
-                  </tr>
-                </thead>
+                <thead><tr><th>DM Capability</th><th>2025</th><th>2026 Target</th><th>Gap</th></tr></thead>
                 <tbody>
                   <tr><td>DM Strategy</td><td class="DMApp26-hig">3.2</td><td>3.2</td><td style="color:#8385A8">—</td></tr>
                   <tr><td>Content Marketing</td><td class="DMApp26-hig">3.0</td><td>3.0</td><td style="color:#8385A8">—</td></tr>
-                  <tr><td>Search Engine Optimization</td><td class="DMApp26-hig">3.0</td><td>3.0</td><td style="color:#8385A8">—</td></tr>
-                  <tr><td>Influencer Marketing &amp; Partnerships</td><td class="DMApp26-hi">2.6</td><td>3.0</td><td style="color:#F47920;font-weight:700">+0.4</td></tr>
+                  <tr><td>SEO</td><td class="DMApp26-hig">3.0</td><td>3.0</td><td style="color:#8385A8">—</td></tr>
+                  <tr><td>Influencer Marketing</td><td class="DMApp26-hi">2.6</td><td>3.0</td><td style="color:#F47920;font-weight:700">+0.4</td></tr>
                   <tr><td>Paid Digital Media</td><td class="DMApp26-hi">2.7</td><td>2.8</td><td style="color:#F47920;font-weight:700">+0.1</td></tr>
                   <tr><td>Marketing Automation</td><td>2.3</td><td>2.8</td><td style="color:#C0392B;font-weight:700">+0.5 ⚑</td></tr>
                   <tr><td>Social Media</td><td>2.1</td><td>2.8</td><td style="color:#C0392B;font-weight:700">+0.7 ⚑</td></tr>
                   <tr><td>Data and Analytics</td><td>2.3</td><td>2.3</td><td style="color:#8385A8">—</td></tr>
-                  <tr><td>User Experience / Mobile</td><td>2.2</td><td>2.2</td><td style="color:#8385A8">—</td></tr>
+                  <tr><td>UX / Mobile</td><td>2.2</td><td>2.2</td><td style="color:#8385A8">—</td></tr>
                   <tr class="DMApp26-total-row"><td><strong>Total</strong></td><td><strong class="DMApp26-hig">2.6</strong></td><td><strong>2.8</strong></td><td style="color:#F47920;font-weight:800">+0.2</td></tr>
                 </tbody>
               </table>
             </div>
           </div>
-
-          <!-- Radar + Global Metrics -->
           <div class="DMApp26-stack">
             <div class="DMApp26-card">
-              <div class="DMApp26-ct">Capability Radar — Turkey CP 2025</div>
+              <div class="DMApp26-ct">Capability Radar — Turkey CP 2025 vs 2026 Target</div>
               <div class="DMApp26-ch-tall"><canvas id="DMApp26-c-dmmm-radar"></canvas></div>
+            </div>
+            <div class="DMApp26-card">
+              <div class="DMApp26-ct">DM Spending — % of A&amp;P</div>
+              <div class="DMApp26-ch"><canvas id="DMApp26-c-dmmm-spend"></canvas></div>
             </div>
           </div>
         </div>
-
-        <!-- AMEA Comparison -->
-        <div class="DMApp26-card DMApp26-mb">
-          <div class="DMApp26-ct">AMEA Overall — 2024 vs 2025</div>
-          <div class="DMApp26-tw DMApp26-mt">
-            <table>
-              <thead>
-                <tr>
-                  <th>Year</th><th>Overall</th><th>Budget %</th><th>DM Strategy</th>
-                  <th>Content Mktg</th><th>Paid Media</th><th>Social Media</th>
-                  <th>Influencer</th><th>UX/Mobile</th><th>SEO AIO</th>
-                  <th>Data &amp; Analytics</th><th>Mktg Auto</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>2024</strong></td>
-                  <td>1.3</td><td>16%</td><td>1.9</td><td>1.5</td><td>1.5</td>
-                  <td>1.5</td><td>1.0</td><td>0.8</td><td>1.2</td><td>1.4</td><td>1.0</td>
-                </tr>
-                <tr style="background:var(--da-greenL,#E6F5EE)">
-                  <td><strong>2025</strong></td>
-                  <td class="DMApp26-hig"><strong>1.8</strong></td>
-                  <td class="DMApp26-hig"><strong>22%</strong></td>
-                  <td class="DMApp26-hig">2.7</td><td class="DMApp26-hig">2.1</td>
-                  <td class="DMApp26-hig">1.8</td><td class="DMApp26-hig">1.9</td>
-                  <td class="DMApp26-hig">1.7</td><td class="DMApp26-hig">1.4</td>
-                  <td>1.4</td><td class="DMApp26-hig">1.6</td><td class="DMApp26-hig">1.2</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
         <div class="DMApp26-g2 DMApp26-mb">
-          <!-- Highest / Lowest -->
           <div class="DMApp26-card">
             <div class="DMApp26-ct">Highest DM Maturities — AMEA 2025</div>
             <div class="DMApp26-tw DMApp26-mt">
               <table>
                 <thead><tr><th>Country</th><th>2024</th><th>2025</th></tr></thead>
                 <tbody>
-                  <tr><td>Pakistan CP</td><td>3.0</td><td class="DMApp26-hig"><strong>3.1</strong></td></tr>
-                  <tr><td>India CP</td><td>2.1</td><td class="DMApp26-hig"><strong>3.0</strong></td></tr>
-                  <tr style="background:#E6F5EE"><td><strong>🇹🇷 Turkey CP</strong></td><td>2.7</td><td class="DMApp26-hig"><strong>2.6</strong></td></tr>
+                  <tr><td>Pakistan CP</td><td>3.0</td><td class="DMApp26-hig">3.1</td></tr>
+                  <tr><td>India CP</td><td>2.1</td><td class="DMApp26-hig">3.0</td></tr>
+                  <tr style="background:#E6F5EE"><td><strong>🇹🇷 Turkey CP</strong></td><td>2.7</td><td class="DMApp26-hig">2.6</td></tr>
                   <tr><td>Bangladesh CP*</td><td>1.4</td><td class="DMApp26-hi">2.4</td></tr>
                   <tr><td>Vietnam CP</td><td>2.0</td><td>2.1</td></tr>
                   <tr><td>Russia CP</td><td>2.2</td><td>2.0</td></tr>
@@ -2112,83 +1905,25 @@
                 </tbody>
               </table>
             </div>
-            <p style="font-size:11px;color:var(--da-text3,#8385A8);margin-top:6px">* still being reviewed</p>
           </div>
-
-          <div class="DMApp26-stack">
-            <div class="DMApp26-card">
-              <div class="DMApp26-ct">Top Maturity Increases 2024→2025</div>
-              <div class="DMApp26-tw DMApp26-mt">
-                <table>
-                  <thead><tr><th>Country</th><th>Delta</th></tr></thead>
-                  <tbody>
-                    <tr><td>South Africa CP</td><td style="color:#00A651;font-weight:800">+1.3</td></tr>
-                    <tr><td>Zambia CP*</td><td style="color:#00A651;font-weight:800">+1.2</td></tr>
-                    <tr><td>Bangladesh CP*</td><td style="color:#00A651;font-weight:700">+1.0</td></tr>
-                    <tr><td>India CP</td><td style="color:#00A651;font-weight:700">+0.9</td></tr>
-                    <tr><td>Egypt CP*</td><td style="color:#00A651;font-weight:700">+0.8</td></tr>
-                    <tr><td>Kenya CP</td><td style="color:#00A651;font-weight:700">+0.7</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div class="DMApp26-card">
-              <div class="DMApp26-ct">Top Maturity Decreases 2024→2025</div>
-              <div class="DMApp26-tw DMApp26-mt">
-                <table>
-                  <thead><tr><th>Country</th><th>Delta</th></tr></thead>
-                  <tbody>
-                    <tr><td>Russia CP</td><td style="color:#C0392B;font-weight:800">−0.2</td></tr>
-                    <tr style="background:#FFF3F3"><td><strong>🇹🇷 Turkey Seed</strong></td><td style="color:#C0392B;font-weight:800">−0.1</td></tr>
-                    <tr style="background:#FFF3F3"><td><strong>🇹🇷 Turkey CP</strong></td><td style="color:#C0392B;font-weight:800">−0.1</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Global Metrics + Spending -->
-        <div class="DMApp26-g2">
           <div class="DMApp26-card">
             <div class="DMApp26-ct">Global Metrics — Turkey CP</div>
             <div class="DMApp26-tw DMApp26-mt">
               <table>
-                <thead><tr><th>Tool / Metric</th><th>Score / Status</th></tr></thead>
+                <thead><tr><th>Tool / Metric</th><th>Score</th></tr></thead>
                 <tbody>
+                  <tr><td>SEMRush Score</td><td class="DMApp26-hig">84</td></tr>
                   <tr><td>DMs Score</td><td class="DMApp26-hi">4</td></tr>
                   <tr><td>Canva</td><td class="DMApp26-hi">4</td></tr>
-                  <tr><td>SEMRush Score</td><td class="DMApp26-hig">84</td></tr>
                   <tr><td>GA4 Property Audit</td><td class="DMApp26-hi">3</td></tr>
                   <tr><td>SEO Health</td><td class="DMApp26-hi">3</td></tr>
                   <tr><td>Emplifi</td><td>2</td></tr>
                   <tr><td>SFDC</td><td>2</td></tr>
                   <tr><td>% Grower Data</td><td>2</td></tr>
-                  <tr><td>Trinity</td><td>1</td></tr>
-                  <tr><td>Global Campaign Dashboard</td><td>1</td></tr>
                   <tr><td>Marketing Cloud</td><td>1</td></tr>
                   <tr><td>Cropwise Active Users</td><td style="color:#C0392B;font-weight:700">0 ⚑</td></tr>
                 </tbody>
               </table>
-            </div>
-          </div>
-
-          <div class="DMApp26-stack">
-            <div class="DMApp26-card">
-              <div class="DMApp26-ct">DM Spending — % of A&amp;P</div>
-              <div class="DMApp26-ch"><canvas id="DMApp26-c-dmmm-spend"></canvas></div>
-            </div>
-            <div class="DMApp26-card">
-              <div class="DMApp26-ct">Internal Roles &amp; Resources</div>
-              <div class="DMApp26-g3" style="gap:8px;margin-top:4px">
-                <div class="DMApp26-kpi DMApp26-kln"><div class="DMApp26-k-num">3</div><div class="DMApp26-k-lbl">Internal DM Roles</div></div>
-                <div class="DMApp26-kpi DMApp26-klg"><div class="DMApp26-k-num">1</div><div class="DMApp26-k-lbl">Agency</div></div>
-                <div class="DMApp26-kpi DMApp26-klo"><div class="DMApp26-k-num">4</div><div class="DMApp26-k-lbl">NPIs</div></div>
-              </div>
-            </div>
-            <div class="DMApp26-callout">
-              <p>Next Steps via SynGPT</p>
-              <div class="DMApp26-callout-sub">Download DMMM 2025 Excel as PDF → upload to SynGPT with DMS → use prompt for tailored recommendations → coordinate with region to validate and prioritize actions.</div>
             </div>
           </div>
         </div>
@@ -2201,61 +1936,29 @@
         <div class="DMApp26-sh">
           <div class="DMApp26-sh-ey">Monthly Metrics Dashboard · AMEA Lighthouse Countries</div>
           <h2>SEO &amp; AI Search Analysis<br>Turkey vs. AMEA</h2>
-          <p>syngenta.com.tr — Site Health 85 · AI Search Health 85 · CTR 5.4% · GSC Clicks 28,400</p>
+          <p>syngenta.com.tr — Site Health 85 · AI Search 85 · CTR 5.4% · GSC Clicks 28,400</p>
         </div>
-
-        <!-- Turkey highlights -->
         <div class="DMApp26-g4 DMApp26-mb">
-          <div class="DMApp26-kpi DMApp26-kn" data-ic="💚">
-            <div class="DMApp26-k-num">#2</div>
-            <div class="DMApp26-k-lbl">Site Health Ranking</div>
-            <div class="DMApp26-k-sub">Score 85 / 13 countries</div>
-          </div>
-          <div class="DMApp26-kpi DMApp26-kg" data-ic="🤖">
-            <div class="DMApp26-k-num">#2</div>
-            <div class="DMApp26-k-lbl">AI Search Health</div>
-            <div class="DMApp26-k-sub">Score 85 — #2 in AMEA</div>
-          </div>
-          <div class="DMApp26-kpi DMApp26-kt" data-ic="🖱️">
-            <div class="DMApp26-k-num">5.4%</div>
-            <div class="DMApp26-k-lbl">Average CTR</div>
-            <div class="DMApp26-k-sub">#6 · Above AMEA avg ~4.8%</div>
-          </div>
-          <div class="DMApp26-kpi DMApp26-ko" data-ic="📈">
-            <div class="DMApp26-k-num">28,400</div>
-            <div class="DMApp26-k-lbl">GSC Clicks</div>
-            <div class="DMApp26-k-sub">#4 among lighthouse countries</div>
-          </div>
+          <div class="DMApp26-kpi DMApp26-kn" data-ic="💚"><div class="DMApp26-k-num">#2</div><div class="DMApp26-k-lbl">Site Health</div><div class="DMApp26-k-sub">Score 85 / 13 countries</div></div>
+          <div class="DMApp26-kpi DMApp26-kg" data-ic="🤖"><div class="DMApp26-k-num">#2</div><div class="DMApp26-k-lbl">AI Search Health</div><div class="DMApp26-k-sub">Score 85 · #2 in AMEA</div></div>
+          <div class="DMApp26-kpi DMApp26-kt" data-ic="🖱️"><div class="DMApp26-k-num">5.4%</div><div class="DMApp26-k-lbl">Average CTR</div><div class="DMApp26-k-sub">Above AMEA avg ~4.8%</div></div>
+          <div class="DMApp26-kpi DMApp26-ko" data-ic="📈"><div class="DMApp26-k-num">28,400</div><div class="DMApp26-k-lbl">GSC Clicks</div><div class="DMApp26-k-sub">#4 among lighthouse</div></div>
         </div>
-
         <div class="DMApp26-g2 DMApp26-mb">
           <div class="DMApp26-card">
-            <div class="DMApp26-ct">Site Health Score — All Countries (sorted)</div>
+            <div class="DMApp26-ct">Site Health — All Countries Sorted</div>
             <div class="DMApp26-ch-tall"><canvas id="DMApp26-c-seo-health"></canvas></div>
           </div>
           <div class="DMApp26-card">
-            <div class="DMApp26-ct">AI Search Health Score — All Countries</div>
+            <div class="DMApp26-ct">AI Search Health — All Countries</div>
             <div class="DMApp26-ch-tall"><canvas id="DMApp26-c-seo-ai"></canvas></div>
           </div>
         </div>
-
-        <!-- Full table sorted by Site Health -->
         <div class="DMApp26-card DMApp26-mb">
-          <div class="DMApp26-ct">Monthly Metrics — Sorted by SEMrush Site Health ↓</div>
+          <div class="DMApp26-ct">Monthly Metrics — Sorted by Site Health ↓</div>
           <div class="DMApp26-tw DMApp26-mt">
             <table>
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Country</th>
-                  <th>Website</th>
-                  <th>Site Health</th>
-                  <th>AI Search Health</th>
-                  <th>GSC Clicks</th>
-                  <th>GSC Impressions</th>
-                  <th>Avg CTR</th>
-                </tr>
-              </thead>
+              <thead><tr><th>#</th><th>Country</th><th>Website</th><th>Site Health</th><th>AI Search</th><th>GSC Clicks</th><th>Impressions</th><th>CTR</th></tr></thead>
               <tbody>
                 <tr><td>1</td><td>Australia</td><td>syngenta.com.au</td><td class="DMApp26-hig">92</td><td>65</td><td>13,300</td><td>239K</td><td>5.6%</td></tr>
                 <tr style="background:#E6F5EE;font-weight:600"><td>2</td><td>🇹🇷 <strong>Turkey</strong></td><td>syngenta.com.tr</td><td class="DMApp26-hig">85</td><td class="DMApp26-hig">85</td><td class="DMApp26-hi">28,400</td><td>523K</td><td class="DMApp26-hi">5.4%</td></tr>
@@ -2274,174 +1977,15 @@
             </table>
           </div>
         </div>
-
         <div class="DMApp26-callout">
-          <p>🇹🇷 Turkey ranks in the <strong>top half of all AMEA lighthouse countries</strong> across every metric — Site Health #2, AI Search Health #2, GSC Clicks #4, and CTR above the AMEA average at 5.4%.</p>
-          <div class="DMApp26-callout-sub">SEMrush Site Health 80 / AI Search Health 65 · Source: Monthly Metrics Dashboard · Internal Use Only</div>
+          <p>🇹🇷 Turkey ranks <strong>#2 in both Site Health and AI Search Health</strong> among all AMEA lighthouse countries — CTR above AMEA average at 5.4%.</p>
+          <div class="DMApp26-callout-sub">SEMrush Site Health 85 / AI Search Health 85 · Monthly Metrics Dashboard · Internal Use Only</div>
         </div>
       </div>
-
-
-      <!-- ══════════════════════════════════════
-           PANEL: LIVE BENCHMARK
-      ══════════════════════════════════════ -->
-      <div class="DMApp26-panel" id="DMApp26-panel-benchmark">
-        <div class="DMApp26-sh">
-          <div class="DMApp26-sh-ey">Interactive · Live Comparator</div>
-          <h2>Benchmark Karşılaştırıcı</h2>
-          <p>Türkiye metriklerini AMEA ortalaması ve sektör benchmarklarıyla anlık karşılaştır</p>
-        </div>
-
-        <!-- Metric selector -->
-        <div class="DMApp26-card DMApp26-mb" id="DMApp26-bm-card">
-          <div class="DMApp26-ct">Metrik Seç</div>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px">
-            <button class="DMApp26-bm-btn DMApp26-bm-btn--active" data-metric="engagement" onclick="DMApp26.selectMetric(this)">Engagement Rate</button>
-            <button class="DMApp26-bm-btn" data-metric="ctr" onclick="DMApp26.selectMetric(this)">CTR</button>
-            <button class="DMApp26-bm-btn" data-metric="sitehealth" onclick="DMApp26.selectMetric(this)">Site Health</button>
-            <button class="DMApp26-bm-btn" data-metric="aisearch" onclick="DMApp26.selectMetric(this)">AI Search Health</button>
-            <button class="DMApp26-bm-btn" data-metric="dmmaturity" onclick="DMApp26.selectMetric(this)">DM Maturity</button>
-            <button class="DMApp26-bm-btn" data-metric="budget" onclick="DMApp26.selectMetric(this)">DM Budget %</button>
-          </div>
-
-          <!-- Dynamic comparison display -->
-          <div id="DMApp26-bm-display">
-            <!-- Filled by JS -->
-          </div>
-        </div>
-
-        <!-- Country comparisons -->
-        <div class="DMApp26-g2 DMApp26-mb">
-          <div class="DMApp26-card">
-            <div class="DMApp26-ct">AMEA Lighthouse — Site Health Sıralaması</div>
-            <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px" id="DMApp26-bm-bars">
-              <!-- Filled by JS -->
-            </div>
-          </div>
-          <div class="DMApp26-card">
-            <div class="DMApp26-ct">Türkiye Performans Özeti</div>
-            <div class="DMApp26-g2" style="gap:8px;margin-top:8px">
-              <div class="DMApp26-kpi DMApp26-klg"><div class="DMApp26-k-num">5.4%</div><div class="DMApp26-k-lbl">CTR</div><div class="DMApp26-k-sub">AMEA avg ~3.8%</div></div>
-              <div class="DMApp26-kpi DMApp26-kln"><div class="DMApp26-k-num">85</div><div class="DMApp26-k-lbl">Site Health</div><div class="DMApp26-k-sub">AMEA avg ~79</div></div>
-              <div class="DMApp26-kpi DMApp26-klt"><div class="DMApp26-k-num">85</div><div class="DMApp26-k-lbl">AI Search Health</div><div class="DMApp26-k-sub">AMEA avg ~68</div></div>
-              <div class="DMApp26-kpi DMApp26-klo"><div class="DMApp26-k-num">1.88%</div><div class="DMApp26-k-lbl">Engagement Rate</div><div class="DMApp26-k-sub">2025 baseline: 0.58%</div></div>
-              <div class="DMApp26-kpi DMApp26-klg"><div class="DMApp26-k-num">2.6</div><div class="DMApp26-k-lbl">DM Maturity</div><div class="DMApp26-k-sub">AMEA avg: 1.8</div></div>
-              <div class="DMApp26-kpi DMApp26-klb"><div class="DMApp26-k-num">15%</div><div class="DMApp26-k-lbl">DM Budget / A&P</div><div class="DMApp26-k-sub">AMEA avg: 22%</div></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Interactive slider -->
-        <div class="DMApp26-card">
-          <div class="DMApp26-ct">Hedef Simülatörü — 2026 Senaryosu</div>
-          <p style="font-size:13px;color:var(--da-text3,#8385A8);margin-bottom:20px">Slider'ları hareket ettirerek 2026 hedeflerinin AMEA sıralamasına etkisini gör</p>
-          <div style="display:flex;flex-direction:column;gap:20px" id="DMApp26-sliders">
-            <div class="DMApp26-slider-row">
-              <div style="display:flex;justify-content:space-between;margin-bottom:6px">
-                <span style="font-size:13px;font-weight:600;color:var(--da-text2,#3A3C6E)">Site Health Hedefi</span>
-                <span style="font-family:'DM Mono',monospace;font-size:13px;font-weight:700;color:var(--da-navy,#14167A)" id="DMApp26-sl-sitehealth-val">85</span>
-              </div>
-              <input type="range" min="60" max="100" value="85" id="DMApp26-sl-sitehealth" class="DMApp26-range" oninput="DMApp26.updateSlider('sitehealth',this.value)">
-              <div style="display:flex;justify-content:space-between;margin-top:4px;font-family:'DM Mono',monospace;font-size:10px;color:var(--da-text3,#8385A8)">
-                <span>Mevcut: 85</span><span id="DMApp26-sl-sitehealth-rank" style="color:var(--da-green,#00A651);font-weight:700">#2 AMEA</span>
-              </div>
-            </div>
-            <div class="DMApp26-slider-row">
-              <div style="display:flex;justify-content:space-between;margin-bottom:6px">
-                <span style="font-size:13px;font-weight:600;color:var(--da-text2,#3A3C6E)">AI Search Health Hedefi</span>
-                <span style="font-family:'DM Mono',monospace;font-size:13px;font-weight:700;color:var(--da-navy,#14167A)" id="DMApp26-sl-aisearch-val">85</span>
-              </div>
-              <input type="range" min="50" max="100" value="85" id="DMApp26-sl-aisearch" class="DMApp26-range" oninput="DMApp26.updateSlider('aisearch',this.value)">
-              <div style="display:flex;justify-content:space-between;margin-top:4px;font-family:'DM Mono',monospace;font-size:10px;color:var(--da-text3,#8385A8)">
-                <span>Mevcut: 85</span><span id="DMApp26-sl-aisearch-rank" style="color:var(--da-green,#00A651);font-weight:700">#2 AMEA</span>
-              </div>
-            </div>
-            <div class="DMApp26-slider-row">
-              <div style="display:flex;justify-content:space-between;margin-bottom:6px">
-                <span style="font-size:13px;font-weight:600;color:var(--da-text2,#3A3C6E)">DM Maturity Hedefi</span>
-                <span style="font-family:'DM Mono',monospace;font-size:13px;font-weight:700;color:var(--da-navy,#14167A)" id="DMApp26-sl-maturity-val">2.6</span>
-              </div>
-              <input type="range" min="10" max="50" value="26" id="DMApp26-sl-maturity" class="DMApp26-range" oninput="DMApp26.updateSlider('maturity',this.value)">
-              <div style="display:flex;justify-content:space-between;margin-top:4px;font-family:'DM Mono',monospace;font-size:10px;color:var(--da-text3,#8385A8)">
-                <span>Mevcut: 2.6 (2026 target: 2.8)</span><span id="DMApp26-sl-maturity-rank" style="color:var(--da-green,#00A651);font-weight:700">#3 AMEA</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ══════════════════════════════════════
-           PANEL: AI ASSISTANT
-      ══════════════════════════════════════ -->
-      <div class="DMApp26-panel" id="DMApp26-panel-ai">
-        <div class="DMApp26-sh">
-          <div class="DMApp26-sh-ey">Powered by Claude · Anthropic</div>
-          <h2>Digital Marketing<br>AI Assistant</h2>
-          <p>Türkiye CP dijital pazarlama verilerine dayalı sorularını yanıtlar — Türkçe veya İngilizce</p>
-        </div>
-
-        <div class="DMApp26-g32 DMApp26-mb">
-          <!-- Chat window -->
-          <div class="DMApp26-card" style="display:flex;flex-direction:column;height:520px;padding:0;overflow:hidden">
-            <!-- Messages -->
-            <div id="DMApp26-chat-msgs" style="flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:12px">
-              <!-- Welcome message -->
-              <div class="DMApp26-msg DMApp26-msg--ai">
-                <div class="DMApp26-msg-bubble">
-                  Merhaba! Ben Syngenta Türkiye dijital marketing verilerini bilen bir asistanım. 👋<br><br>
-                  Sana şunları sorabilirsin:<br>
-                  • Object Talk kampanyasının sonuçları neydi?<br>
-                  • Türkiye AMEA'da kaçıncı sırada?<br>
-                  • 2026 yönetmeliği stratejiyi nasıl etkiledi?<br>
-                  • Engagement rate ne kadar arttı?
-                </div>
-              </div>
-            </div>
-            <!-- Input -->
-            <div style="padding:16px;border-top:1px solid var(--da-border,#E2E4F0);display:flex;gap:10px;background:var(--da-bg,#F4F5FC)">
-              <input
-                id="DMApp26-chat-input"
-                type="text"
-                placeholder="Sorunuzu yazın... (Türkçe veya İngilizce)"
-                style="flex:1;padding:10px 14px;border:1px solid var(--da-border,#E2E4F0);border-radius:8px;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;outline:none;background:white;color:var(--da-text,#0F1035)"
-                onkeydown="if(event.key==='Enter')DMApp26.sendChat()"
-              >
-              <button
-                onclick="DMApp26.sendChat()"
-                id="DMApp26-chat-send"
-                style="padding:10px 18px;background:var(--da-navy,#14167A);color:white;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:background .2s;white-space:nowrap"
-                onmouseover="this.style.background='#1E21A0'" onmouseout="this.style.background='var(--da-navy,#14167A)'"
-              >Gönder ↑</button>
-            </div>
-          </div>
-
-          <!-- Suggested questions + info -->
-          <div class="DMApp26-stack">
-            <div class="DMApp26-card">
-              <div class="DMApp26-ct">Önerilen Sorular</div>
-              <div style="display:flex;flex-direction:column;gap:6px;margin-top:4px">
-                <button class="DMApp26-suggest-btn" onclick="DMApp26.askSuggestion(this)">Object Talk kampanyasının sonuçları neydi?</button>
-                <button class="DMApp26-suggest-btn" onclick="DMApp26.askSuggestion(this)">Türkiye AMEA'da SEO'da kaçıncı?</button>
-                <button class="DMApp26-suggest-btn" onclick="DMApp26.askSuggestion(this)">2026 yönetmeliği stratejiyi nasıl değiştirdi?</button>
-                <button class="DMApp26-suggest-btn" onclick="DMApp26.askSuggestion(this)">Biologicals kampanyasının bütçesi neydi?</button>
-                <button class="DMApp26-suggest-btn" onclick="DMApp26.askSuggestion(this)">DM Maturity skorumuz nedir ve 2026 hedefi ne?</button>
-                <button class="DMApp26-suggest-btn" onclick="DMApp26.askSuggestion(this)">Magris kampanyasından ne öğrendik?</button>
-                <button class="DMApp26-suggest-btn" onclick="DMApp26.askSuggestion(this)">What was our engagement rate improvement?</button>
-                <button class="DMApp26-suggest-btn" onclick="DMApp26.askSuggestion(this)">Which capability needs the most improvement?</button>
-              </div>
-            </div>
-            <div class="DMApp26-card" style="background:var(--da-navyL,#EEEEF8);border-color:rgba(20,22,122,.15)">
-              <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--da-navy,#14167A);margin-bottom:8px">Hakkında</div>
-              <p style="font-size:12px;color:var(--da-text2,#3A3C6E);line-height:1.6">Bu asistan Syngenta Türkiye 2025–2026 dijital marketing verilerini biliyor: NPI kampanyaları, Biologicals, Magris, Object Talk, SEO metrikleri, DM Maturity sonuçları ve 2026–2027 roadmap.</p>
-              <p style="font-size:11px;color:var(--da-text3,#8385A8);margin-top:8px">Powered by Claude (Anthropic) · Internal Use Only</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div><!-- /DMApp26-cnt -->
   </div><!-- /DMApp26-main -->
 </div><!-- /#DMApp26 -->
+
 
 <script>
 /**
@@ -2507,14 +2051,6 @@
     seo: {
       t: 'SEO & AI Search Analysis',
       c: 'Monthly Metrics Dashboard · Turkey vs. AMEA Lighthouse Countries'
-    },
-    benchmark: {
-      t: 'Live Benchmark Karşılaştırıcı',
-      c: 'Türkiye vs. AMEA · Interactive · Hedef Simülatörü'
-    },
-    ai: {
-      t: 'AI Assistant',
-      c: 'Syngenta Türkiye Digital Marketing · Powered by Claude (Anthropic)'
     }
   };
 
@@ -2844,9 +2380,9 @@
 
     /* ── SEO Charts ── */
     if (panelId === 'seo') {
-      var countries  = ['Australia','Turkey','UK','Spain','Argentina','Paraguay','Vietnam','Egypt','India','Mexico','Italy','Japan','Poland'];
-      var health     = [92, 85, 84, 83, 82, 82, 82, 79, 78, 74, 71, 69, 63];
-      var aiHealth   = [65, 85, 62, 64, 85, 86, 73, 63, 66, 67, 55, 67, 59];
+      var countries  = ['Australia','UK','Spain','Argentina','Paraguay','Vietnam','Turkey','Egypt','India','Mexico','Italy','Japan','Poland'];
+      var health     = [92, 84, 83, 82, 82, 82, 80, 79, 78, 74, 71, 69, 63];
+      var aiHealth   = [65, 62, 64, 85, 86, 73, 65, 63, 66, 67, 55, 67, 59];
       var colors = countries.map(function(c) {
         return c === 'Turkey' ? G : Na.replace('.12','.5');
       });
@@ -2950,255 +2486,207 @@
 
 }(window, document));
 
+</script>
 
 
-/* ══════════════════════════════════════
-   BENCHMARK PANEL
-══════════════════════════════════════ */
-var BM_DATA = {
-  engagement: { label: 'Engagement Rate', unit: '%', turkey: 1.88, amea: 0.72, max: 3, countries: [
-    { name: 'Turkey', val: 1.88 }, { name: 'AMEA Avg', val: 0.72 }
-  ]},
-  ctr: { label: 'Average CTR', unit: '%', turkey: 5.4, amea: 3.8, max: 10, countries: [
-    { name: 'Mexico', val: 7.4 }, { name: 'Italy', val: 7.3 }, { name: 'Vietnam', val: 6.4 },
-    { name: 'Argentina', val: 6.2 }, { name: 'Australia', val: 5.6 },
-    { name: 'Turkey', val: 5.4, highlight: true }, { name: 'Paraguay', val: 4.3 },
-    { name: 'Spain', val: 2.9 }, { name: 'UK', val: 3.5 }
-  ]},
-  sitehealth: { label: 'SEMrush Site Health', unit: '', turkey: 85, amea: 79, max: 100, countries: [
-    { name: 'Australia', val: 92 }, { name: 'Turkey', val: 85, highlight: true },
-    { name: 'UK', val: 84 }, { name: 'Spain', val: 83 },
-    { name: 'Argentina', val: 82 }, { name: 'Vietnam', val: 82 }, { name: 'Paraguay', val: 82 },
-    { name: 'Egypt', val: 79 }, { name: 'India', val: 78 }
-  ]},
-  aisearch: { label: 'AI Search Health', unit: '', turkey: 85, amea: 68, max: 100, countries: [
-    { name: 'Paraguay', val: 86 }, { name: 'Argentina', val: 85 },
-    { name: 'Turkey', val: 85, highlight: true }, { name: 'Vietnam', val: 73 },
-    { name: 'India', val: 66 }, { name: 'Mexico', val: 67 },
-    { name: 'Australia', val: 65 }, { name: 'Spain', val: 64 }, { name: 'UK', val: 62 }
-  ]},
-  dmmaturity: { label: 'DM Maturity Score', unit: '/5', turkey: 2.6, amea: 1.8, max: 4, countries: [
-    { name: 'Pakistan CP', val: 3.1 }, { name: 'India CP', val: 3.0 },
-    { name: 'Turkey CP', val: 2.6, highlight: true }, { name: 'Bangladesh CP', val: 2.4 },
-    { name: 'Vietnam CP', val: 2.1 }, { name: 'Russia CP', val: 2.0 },
-    { name: 'South Africa', val: 1.9 }, { name: 'AMEA Avg', val: 1.8 }
-  ]},
-  budget: { label: 'DM Budget % of A&P', unit: '%', turkey: 15, amea: 22, max: 30, countries: [
-    { name: 'AMEA Avg', val: 22 }, { name: 'Turkey CP', val: 15, highlight: true },
-    { name: 'Turkey 2024', val: 12 }, { name: 'Turkey 2023', val: 8 }
-  ]}
-};
 
-function renderBenchmark(metricKey) {
-  var data = BM_DATA[metricKey];
-  if (!data) return;
+<script>
 
-  // Hero display
-  var diff = ((data.turkey - data.amea) / data.amea * 100).toFixed(0);
-  var diffSign = diff > 0 ? '+' : '';
-  var display = document.getElementById('DMApp26-bm-display');
-  if (display) {
-    display.innerHTML =
-      '<div class="DMApp26-bm-hero">' +
-        '<div>' +
-          '<div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--da-text3,#8385A8);margin-bottom:4px">Türkiye</div>' +
-          '<div class="DMApp26-bm-num">' + data.turkey + data.unit + '</div>' +
-        '</div>' +
-        '<div class="DMApp26-bm-vs">' +
-          '<div class="DMApp26-bm-vs-item"><div class="DMApp26-bm-vs-dot" style="background:var(--da-green,#00A651)"></div>Türkiye: <strong>' + data.turkey + data.unit + '</strong></div>' +
-          '<div class="DMApp26-bm-vs-item"><div class="DMApp26-bm-vs-dot" style="background:var(--da-border,#E2E4F0)"></div>AMEA Avg: <strong>' + data.amea + data.unit + '</strong></div>' +
-          '<div class="DMApp26-bm-badge">' + diffSign + diff + '% AMEA ortalamasına göre</div>' +
-        '</div>' +
-      '</div>';
-  }
+/* ════════════════════════════════════════
+   SEARCH + KEYBOARD NAVIGATION
+════════════════════════════════════════ */
 
-  // Bars
-  var barsEl = document.getElementById('DMApp26-bm-bars');
-  if (barsEl) {
-    var html = '';
-    var sorted = data.countries.slice().sort(function(a,b){ return b.val - a.val; });
-    sorted.forEach(function(c) {
-      var pct = Math.min(100, (c.val / data.max) * 100);
-      var isTurkey = c.highlight || c.name.indexOf('Turkey') > -1;
-      html += '<div class="DMApp26-bm-country-row">' +
-        '<div class="DMApp26-bm-country-meta">' +
-          '<span class="DMApp26-bm-country-name">' + (isTurkey ? '🇹🇷 ' : '') + c.name + '</span>' +
-          '<span class="DMApp26-bm-country-val" style="color:' + (isTurkey ? 'var(--da-green2,#007A3C)' : 'var(--da-navy,#14167A)') + '">' + c.val + data.unit + '</span>' +
-        '</div>' +
-        '<div class="DMApp26-bm-track">' +
-          '<div class="DMApp26-bm-fill ' + (isTurkey ? 'DMApp26-bm-fill--turkey' : 'DMApp26-bm-fill--other') + '" style="width:0" data-w="' + pct + '"></div>' +
-        '</div>' +
-      '</div>';
-    });
-    barsEl.innerHTML = html;
-    // Animate bars
-    setTimeout(function() {
-      barsEl.querySelectorAll('.DMApp26-bm-fill').forEach(function(f) {
-        f.style.width = f.dataset.w + '%';
+/* ── SEARCH INDEX ── */
+var SEARCH_INDEX = [
+  /* Overview */
+  { panel:'overview', label:'Overview', keywords:['overview','genel','impressions','erişim','60.5m','6.9m','1.1m','46.5k','engagement','205%','284k','mase award','digital in dna'] },
+
+  /* NPI */
+  { panel:'npi', label:'NPI – Paid Media', keywords:['npi','paid media','ctr','cpa','orondis','radius','76640','38992','9.4','8.6','4.21','keyword','a/b test','landing page','demand creation','tıklama','cost','maliyet'] },
+
+  /* Biologicals */
+  { panel:'bio', label:'Biologicals', keywords:['biologicals','biyolojik','meta ads','google ads','2453109','185767','1295476','4.57','463206','301351','163854','reach','erişim','tıklama'] },
+
+  /* Magris */
+  { panel:'magris', label:'Magris Campaign', keywords:['magris','mediterranean','fruit fly','cpm','cpc','pmax','performance max','video','funnel','blueprint','npi launch','citrus','peach','turunçgil','şeftali'] },
+
+  /* Strategy */
+  { panel:'strategy', label:'2026 Strategy', keywords:['yönetmelik','regulation','ocak','january 2026','13 ocak','disease','hastalık','pest','zararlı','pivot','strateji','engagement rate','1.88','0.58','224%','saves','shares','comments','likes'] },
+
+  /* Object Talk */
+  { panel:'ot', label:'Object Talk', keywords:['object talk','284k','284000','organic','organik','reel','mildew','küf','rust','pas','wheat','buğday','chatgpt','whisk','flow','canva','2060','117 shares','838%','274%','278%','1200 followers','instagram','explore'] },
+
+  /* Roadmap */
+  { panel:'roadmap', label:'2026–2027 Roadmap', keywords:['roadmap','yol haritası','2027','ai farmer','disease prediction','seasonal','lead quality','viva engage','biologicals visibility','expert video','ambassador','elçi'] },
+
+  /* DM Maturity */
+  { panel:'dmmm', label:'DM Maturity', keywords:['maturity','olgunluk','dmmm','2.6','2.8','syngpt','pakistan','india','bangladesh','vietnam','budget','%15','a&p','grower data','40500','sfdc','cropwise','canva','emplifi','semrush score','84'] },
+
+  /* SEO */
+  { panel:'seo', label:'SEO & AI Search', keywords:['seo','site health','85','ai search','gsc','clicks','impressions','5.4%','28400','523k','australia','92','semrush','conductor','ahrefs','lighthouse','amea ranking','poland','63'] },
+];
+
+/* Highlight text helper */
+function daHighlight(text, query) {
+  if (!query) return text;
+  var re = new RegExp('(' + query.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'gi');
+  return text.replace(re, '<mark style="background:#FFF3CD;color:#0F1035;border-radius:2px;padding:0 1px">$1</mark>');
+}
+
+var DMApp26Search = (function() {
+  var lastQuery = '';
+  var highlightTimeout = null;
+
+  function query(q) {
+    var resultsEl = document.getElementById('DMApp26-search-results');
+    if (!resultsEl) return;
+    q = q.trim().toLowerCase();
+    lastQuery = q;
+
+    if (!q) { resultsEl.style.display = 'none'; return; }
+
+    // Search
+    var matches = [];
+    SEARCH_INDEX.forEach(function(item) {
+      var score = 0;
+      var matchedKw = [];
+      item.keywords.forEach(function(kw) {
+        if (kw.toLowerCase().indexOf(q) > -1) {
+          score += (kw.toLowerCase() === q) ? 10 : 3;
+          matchedKw.push(kw);
+        }
+        if (item.label.toLowerCase().indexOf(q) > -1) score += 5;
       });
-    }, 100);
-  }
-}
-
-function selectMetric(el) {
-  document.querySelectorAll('.DMApp26-bm-btn').forEach(function(b) { b.classList.remove('DMApp26-bm-btn--active'); });
-  el.classList.add('DMApp26-bm-btn--active');
-  renderBenchmark(el.dataset.metric);
-}
-
-/* Slider rankings */
-var SITE_HEALTH_RANKS = [[92,1],[85,2],[84,3],[83,4],[82,5],[79,8],[78,9],[74,10],[71,11],[69,12],[63,13]];
-var AI_RANKS = [[86,1],[85,2],[73,3],[67,4],[66,5],[65,6],[64,7],[63,8],[62,9],[59,10],[55,11]];
-var MATURITY_RANKS = [[31,1],[30,2],[26,3],[24,4],[21,5],[20,6],[19,7]];
-
-function getRank(val, table) {
-  val = parseFloat(val);
-  for (var i = 0; i < table.length; i++) {
-    if (val >= table[i][0]) return '#' + table[i][1] + ' AMEA';
-  }
-  return '#' + table[table.length-1][1] + '+ AMEA';
-}
-
-function updateSlider(type, val) {
-  if (type === 'sitehealth') {
-    document.getElementById('DMApp26-sl-sitehealth-val').textContent = val;
-    document.getElementById('DMApp26-sl-sitehealth-rank').textContent = getRank(val, SITE_HEALTH_RANKS);
-  } else if (type === 'aisearch') {
-    document.getElementById('DMApp26-sl-aisearch-val').textContent = val;
-    document.getElementById('DMApp26-sl-aisearch-rank').textContent = getRank(val, AI_RANKS);
-  } else if (type === 'maturity') {
-    var display = (val / 10).toFixed(1);
-    document.getElementById('DMApp26-sl-maturity-val').textContent = display;
-    document.getElementById('DMApp26-sl-maturity-rank').textContent = getRank(val/10, MATURITY_RANKS.map(function(r){ return [r[0]/10, r[1]]; }));
-  }
-}
-
-/* Auto-render benchmark on panel open */
-var _origGo = window.DMApp26 ? window.DMApp26.go : null;
-
-/* ══════════════════════════════════════
-   AI CHAT PANEL
-══════════════════════════════════════ */
-var CHAT_CONTEXT = `You are a digital marketing assistant for Syngenta Türkiye. You have deep knowledge of the following data and should answer questions about it concisely and helpfully. Answer in the same language as the question (Turkish or English).
-
-KEY DATA:
-- 2025 60th Anniversary: 60.5M+ total impressions, 6.9M+ total access, 1.1M+ website traffic, 46.5K+ Meta interactions
-- NPI Paid Media: +96% CTR increase, -18% CPA decrease vs historical average. Campaigns: Orondis (76,640 users, 9.4% CTR, 2.24 TRY CPC), Radius (38,992 users, 8.6% CTR, 2.10 TRY CPC)
-- Biologicals 2025: Total spend 465,206 TL. Meta: 2,453,109 reach, 185,767 clicks, 163,854 TL. Google: 1,295,476 impressions, 59,170 clicks, 4.57% CTR, 301,351 TL
-- Magris NPI Launch: 50-60% CPM/CPC improvement vs 2025, 4-phase funnel (Pre→Tease→Launch→Reinforce), created scalable NPI blueprint
-- MaSE Award: Won "Digital in DNA" category at AMEA Marketing & Sales Excellence awards
-- 2026 New Regulation: January 13, 2026 - direct digital promotion of crop protection products banned. Strategy pivoted to disease/pest awareness-first content
-- 2025 vs 2026 Engagement (12-post comparison): Likes +172% (359→975), Comments +550% (2→13), Shares +243% (46→158), Reposts +367% (3→14), Saves +471% (35→200), TOTAL +205% (445→1,360). Engagement rate 0.58%→1.88% (+224%). Avg per post: 37→113
-- Object Talk Campaign: AI-powered anthropomorphic storytelling (plants and diseases speak). Single post: 284,000+ organic reach, 45,282 paid reach, 2,060+ likes, 117 shares, 61 saves, 1,200+ new followers in one week (5% of 24,400 total base), CTR 3.09%, CPC $0.023, shares +838% vs 2026 avg, saves +274%, appeared in Instagram Explore section. Production: ChatGPT→Google Whisk→Google Flow→Canva→Instagram Reels. Content: Mildew and Rust Diseases in Wheat
-- SEO (Monthly Metrics): Turkey syngenta.com.tr: Site Health 85 (#2 AMEA), AI Search Health 85 (#2 AMEA), GSC Clicks 28,400, GSC Impressions 523K, CTR 5.4%
-- DM Maturity 2025: Turkey CP Overall 2.6 (3rd highest AMEA), 2026 target 2.8. Budget: 8%(2023)→12%(2024)→15%(2025) of A&P. Grower contacts: 40,500. Highest scores: DM Strategy 3.2, Content Marketing 3.0, SEO 3.0. Needs improvement: Social Media 2.1, Marketing Automation 2.3
-- AMEA Highest Maturities: Pakistan CP 3.1, India CP 3.0, Turkey CP 2.6
-- 2026-2027 Roadmap: AI Farmer Education, Disease Prediction+Content Timing, Object Talk Seasonal, Web Traffic→Lead Quality, Brand Advocacy (Viva Engage), Biologicals Visibility, Expert Video Concept`;
-
-var chatHistory = [];
-
-function addMessage(role, text) {
-  var msgs = document.getElementById('DMApp26-chat-msgs');
-  if (!msgs) return;
-  var div = document.createElement('div');
-  div.className = 'DMApp26-msg DMApp26-msg--' + (role === 'user' ? 'user' : 'ai');
-  var time = new Date().toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
-  div.innerHTML = '<div class="DMApp26-msg-bubble">' + text.replace(/
-/g, '<br>') + '</div>' +
-                  '<div class="DMApp26-msg-time">' + time + '</div>';
-  msgs.appendChild(div);
-  msgs.scrollTop = msgs.scrollHeight;
-  return div;
-}
-
-function addTyping() {
-  var msgs = document.getElementById('DMApp26-chat-msgs');
-  var div = document.createElement('div');
-  div.className = 'DMApp26-msg DMApp26-msg--ai';
-  div.id = 'DMApp26-typing-indicator';
-  div.innerHTML = '<div class="DMApp26-typing"><span></span><span></span><span></span></div>';
-  msgs.appendChild(div);
-  msgs.scrollTop = msgs.scrollHeight;
-}
-
-function removeTyping() {
-  var t = document.getElementById('DMApp26-typing-indicator');
-  if (t) t.remove();
-}
-
-async function sendChat() {
-  var input = document.getElementById('DMApp26-chat-input');
-  var sendBtn = document.getElementById('DMApp26-chat-send');
-  if (!input) return;
-  var text = input.value.trim();
-  if (!text) return;
-
-  input.value = '';
-  input.disabled = true;
-  sendBtn.disabled = true;
-  sendBtn.textContent = '...';
-
-  addMessage('user', text);
-  chatHistory.push({ role: 'user', content: text });
-  addTyping();
-
-  try {
-    var messages = chatHistory.slice(-10);
-    var response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
-        system: CHAT_CONTEXT,
-        messages: messages
-      })
+      if (score > 0) matches.push({ item: item, score: score, kw: matchedKw[0] || '' });
     });
-    var data = await response.json();
-    removeTyping();
-    var reply = data.content && data.content[0] ? data.content[0].text : 'Bir hata oluştu, lütfen tekrar deneyin.';
-    addMessage('ai', reply);
-    chatHistory.push({ role: 'assistant', content: reply });
-  } catch(err) {
-    removeTyping();
-    addMessage('ai', 'Bağlantı hatası oluştu. Lütfen internet bağlantınızı kontrol edin ve tekrar deneyin.');
-  }
 
-  input.disabled = false;
-  sendBtn.disabled = false;
-  sendBtn.textContent = 'Gönder ↑';
-  input.focus();
-}
+    matches.sort(function(a,b){ return b.score - a.score; });
 
-function askSuggestion(btn) {
-  var input = document.getElementById('DMApp26-chat-input');
-  if (input) {
-    input.value = btn.textContent;
-    sendChat();
-  }
-}
-
-/* Extend DMApp26.go to auto-render benchmark */
-(function() {
-  if (!window.DMApp26) return;
-  var origGo = window.DMApp26.go;
-  window.DMApp26.go = function(el) {
-    origGo(el);
-    var id = el.dataset.panel;
-    if (id === 'benchmark') {
-      setTimeout(function() { renderBenchmark('engagement'); }, 50);
+    if (matches.length === 0) {
+      resultsEl.innerHTML = '<div style="padding:16px 18px;font-size:13px;color:#8385A8">Sonuç bulunamadı</div>';
+    } else {
+      var html = '<div style="padding:8px 4px">';
+      matches.forEach(function(m, i) {
+        var icon = {overview:'📊',npi:'🎯',bio:'🧪',magris:'🚀',strategy:'📋',ot:'🌿',roadmap:'🗺️',dmmm:'🏅',seo:'🔍'}[m.item.panel] || '📄';
+        html += '<div class="da-search-result" data-panel="' + m.item.panel + '" ' +
+          'style="display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;border-radius:8px;margin:2px 4px;transition:background .15s" ' +
+          'onmouseover="this.style.background=\'#F4F5FC\'" ' +
+          'onmouseout="this.style.background=\'transparent\'" ' +
+          'onclick="DMApp26Search.go(\'' + m.item.panel + '\')">' +
+          '<span style="font-size:16px">' + icon + '</span>' +
+          '<div style="flex:1;min-width:0">' +
+            '<div style="font-size:13px;font-weight:700;color:#0F1035">' + daHighlight(m.item.label, q) + '</div>' +
+            (m.kw ? '<div style="font-size:11px;color:#8385A8;margin-top:1px">…' + daHighlight(m.kw, q) + '…</div>' : '') +
+          '</div>' +
+          '<span style="font-size:10px;font-weight:600;color:#00A651;background:#E6F5EE;padding:2px 7px;border-radius:10px;white-space:nowrap">' + (i === 0 ? 'En iyi' : '') + '</span>' +
+        '</div>';
+      });
+      html += '</div>';
+      resultsEl.innerHTML = html;
     }
-  };
-  window.DMApp26.selectMetric = selectMetric;
-  window.DMApp26.updateSlider = updateSlider;
-  window.DMApp26.sendChat    = sendChat;
-  window.DMApp26.askSuggestion = askSuggestion;
+    resultsEl.style.display = 'block';
+  }
+
+  function go(panelId) {
+    var ni = document.querySelector('.DMApp26-ni[data-panel="' + panelId + '"]');
+    var resultsEl = document.getElementById('DMApp26-search-results');
+    var inp = document.getElementById('DMApp26-search-input');
+    if (ni && window.DMApp26) {
+      window.DMApp26.go(ni);
+      if (resultsEl) resultsEl.style.display = 'none';
+      if (inp) { inp.value = ''; inp.blur(); }
+      // Highlight matching content
+      clearTimeout(highlightTimeout);
+      highlightTimeout = setTimeout(function() { highlightInPanel(panelId, lastQuery); }, 300);
+    }
+  }
+
+  function highlightInPanel(panelId, q) {
+    if (!q) return;
+    var panel = document.getElementById('DMApp26-panel-' + panelId);
+    if (!panel) return;
+    // Animate panel title with green flash
+    var title = document.getElementById('DMApp26-tb-t');
+    if (title) {
+      title.style.transition = 'color .3s';
+      title.style.color = '#00A651';
+      setTimeout(function() { title.style.color = ''; }, 1200);
+    }
+  }
+
+  return { query: query, go: go };
 })();
 
-/* Patch PANELS meta */
-if (window.DMApp26 && typeof PANELS !== 'undefined') {
-  PANELS.benchmark = { t: 'Live Benchmark Karşılaştırıcı', c: 'Türkiye vs. AMEA · Interactive · Real-time' };
-  PANELS.ai        = { t: 'AI Assistant', c: 'Syngenta Türkiye Digital Marketing · Powered by Claude' };
+/* ── KEYBOARD SHORTCUTS ── */
+var DA_PANEL_ORDER = ['overview','npi','bio','magris','strategy','ot','roadmap','dmmm','seo'];
+var DA_CURRENT_IDX = 0;
+
+function daGetCurrentPanel() {
+  var active = document.querySelector('.DMApp26-ni--active');
+  return active ? active.getAttribute('data-panel') : 'overview';
 }
 
+function daNavigate(direction) {
+  var cur = daGetCurrentPanel();
+  var idx = DA_PANEL_ORDER.indexOf(cur);
+  if (idx === -1) idx = 0;
+  var next = idx + direction;
+  if (next < 0) next = DA_PANEL_ORDER.length - 1;
+  if (next >= DA_PANEL_ORDER.length) next = 0;
+  var ni = document.querySelector('.DMApp26-ni[data-panel="' + DA_PANEL_ORDER[next] + '"]');
+  if (ni && window.DMApp26) window.DMApp26.go(ni);
+}
+
+document.addEventListener('keydown', function(e) {
+  var tag = document.activeElement ? document.activeElement.tagName : '';
+  var isInput = tag === 'INPUT' || tag === 'TEXTAREA';
+
+  /* Open search with / or Ctrl+K */
+  if ((e.key === '/' || (e.ctrlKey && e.key === 'k')) && !isInput) {
+    e.preventDefault();
+    var inp = document.getElementById('DMApp26-search-input');
+    if (inp) { inp.focus(); inp.select(); }
+    return;
+  }
+
+  /* Close search with Escape */
+  if (e.key === 'Escape') {
+    var inp = document.getElementById('DMApp26-search-input');
+    var res = document.getElementById('DMApp26-search-results');
+    if (inp) { inp.value = ''; inp.blur(); }
+    if (res) res.style.display = 'none';
+    return;
+  }
+
+  if (isInput) return;
+
+  /* Arrow keys — panel navigation */
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); daNavigate(1); return; }
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   { e.preventDefault(); daNavigate(-1); return; }
+
+  /* Number keys 1–9 — jump to panel */
+  var num = parseInt(e.key);
+  if (num >= 1 && num <= DA_PANEL_ORDER.length) {
+    var ni = document.querySelector('.DMApp26-ni[data-panel="' + DA_PANEL_ORDER[num-1] + '"]');
+    if (ni && window.DMApp26) window.DMApp26.go(ni);
+    return;
+  }
+});
+
+/* ── KEYBOARD HINT (shows briefly on load) ── */
+(function() {
+  var hint = document.createElement('div');
+  hint.style.cssText = 'position:fixed;bottom:20px;right:20px;background:rgba(20,22,122,.85);backdrop-filter:blur(8px);color:white;padding:10px 16px;border-radius:10px;font-size:11px;z-index:500;pointer-events:none;transition:opacity .5s;display:flex;gap:14px;align-items:center';
+  hint.innerHTML =
+    '<span style="opacity:.6">Kısayollar:</span>' +
+    '<kbd style="background:rgba(255,255,255,.15);padding:2px 7px;border-radius:4px;font-family:monospace">← →</kbd><span style="opacity:.7">panel</span>' +
+    '<kbd style="background:rgba(255,255,255,.15);padding:2px 7px;border-radius:4px;font-family:monospace">1–9</kbd><span style="opacity:.7">direkt git</span>' +
+    '<kbd style="background:rgba(255,255,255,.15);padding:2px 7px;border-radius:4px;font-family:monospace">/</kbd><span style="opacity:.7">ara</span>';
+  document.body.appendChild(hint);
+  setTimeout(function() { hint.style.opacity = '0'; }, 3000);
+  setTimeout(function() { hint.remove(); }, 3600);
+})();
+
 </script>
+</body>
+</html>
