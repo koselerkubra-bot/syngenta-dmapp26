@@ -635,7 +635,7 @@
 
 /* ── CHART WRAPPERS ── */
 #DMApp26 .DMApp26-ch      { position: relative; height: 200px; }
-#DMApp26 .DMApp26-ch-tall { position: relative; height: 230px; }
+#DMApp26 .DMApp26-ch-tall { position: relative; height: 280px; }
 
 /* ── ENGAGEMENT BARS ── */
 #DMApp26 .DMApp26-ebar {
@@ -3612,68 +3612,56 @@
 
     /* ── SEO Charts ── */
     if (panelId === 'seo') {
-      var countries  = ['Australia','UK','Spain','Argentina','Paraguay','Vietnam','Turkey','Egypt','India','Mexico','Italy','Japan','Poland'];
-      var health     = [92, 84, 83, 82, 82, 82, 80, 79, 78, 74, 71, 69, 63];
-      var aiHealth   = [65, 62, 64, 85, 86, 73, 65, 63, 66, 67, 55, 67, 59];
-      var colors = countries.map(function(c) {
-        return c === 'Turkey' ? G : Na.replace('.12','.5');
-      });
-      var borders = countries.map(function(c) {
-        return c === 'Turkey' ? G : N;
-      });
+      /* Sorted by Site Health - Turkey=85 is #2 */
+      var seoC   = ['Australia','🇹🇷 Turkey','UK','Spain','Argentina','Paraguay','Vietnam','Egypt','India','Mexico','Italy','Japan','Poland'];
+      var health  = [92, 85, 84, 83, 82, 82, 82, 79, 78, 74, 71, 69, 63];
+      var aiH     = [65, 85, 62, 64, 85, 86, 73, 63, 66, 67, 55, 67, 59];
+
+      function seoColor(c,alpha){ return c.indexOf('Turkey')>-1 ? 'rgba(0,166,81,'+alpha+')' : 'rgba(20,22,122,'+alpha+')'; }
 
       var cvs = getCanvas('c-seo-health');
-      if (cvs) {
-        new Chart(cvs, {
-          type: 'bar', indexAxis: 'y',
-          data: {
-            labels: countries,
-            datasets: [{
-              label: 'Site Health',
-              data: health,
-              backgroundColor: colors,
-              borderColor: borders,
-              borderWidth: 1.5,
-              borderRadius: 4
-            }]
-          },
-          options: baseOpts({
-            plugins: { legend: { display: false } },
-            scales: {
-              x: { min: 50, max: 100, grid: { color: 'rgba(0,0,0,.04)' }, ticks: { font: { size: 10 } } },
-              y: { grid: { display: false }, ticks: { font: { size: 11, weight: '600' },
-                color: function(ctx) { return countries[ctx.index] === 'Turkey' ? G : '#8385A8'; }
-              }}
-            }
-          })
-        });
-      }
+      if (cvs) new Chart(cvs, {
+        type: 'bar',
+        data: {
+          labels: seoC,
+          datasets: [{ label: 'Site Health', data: health,
+            backgroundColor: seoC.map(function(c){return seoColor(c,'0.7');}),
+            borderRadius: 5
+          }]
+        },
+        options: {
+          responsive:true, maintainAspectRatio:false,
+          plugins:{ legend:{display:false}, tooltip:{callbacks:{label:function(c){return ' Score: '+c.raw;}}}},
+          scales:{
+            x:{ grid:{display:false}, ticks:{font:{size:8}, maxRotation:35,
+              color: function(ctx){ return seoC[ctx.index].indexOf('Turkey')>-1 ? '#00A651' : '#8385A8'; }}},
+            y:{ min:55, max:100, grid:{color:'rgba(0,0,0,.04)'}, ticks:{font:{size:9}}}
+          }
+        }
+      });
 
       var cvs2 = getCanvas('c-seo-ai');
       if (cvs2) {
-        var aiColors = countries.map(function(c) {
-          return c === 'Turkey' ? 'rgba(0,124,145,.8)' : 'rgba(0,124,145,.2)';
-        });
+        /* Sort by AI Search Health */
+        var aiSorted = seoC.map(function(c,i){return {c:c,v:aiH[i]};}).sort(function(a,b){return b.v-a.v;});
         new Chart(cvs2, {
-          type: 'bar', indexAxis: 'y',
+          type: 'bar',
           data: {
-            labels: countries,
-            datasets: [{
-              label: 'AI Search Health',
-              data: aiHealth,
-              backgroundColor: aiColors,
-              borderColor: countries.map(function(c){ return c==='Turkey'?T:T; }),
-              borderWidth: 1.5,
-              borderRadius: 4
+            labels: aiSorted.map(function(x){return x.c;}),
+            datasets: [{ label: 'AI Search Health', data: aiSorted.map(function(x){return x.v;}),
+              backgroundColor: aiSorted.map(function(x){return x.c.indexOf('Turkey')>-1?'rgba(0,124,145,.85)':'rgba(0,124,145,.3)';}),
+              borderRadius: 5
             }]
           },
-          options: baseOpts({
-            plugins: { legend: { display: false } },
-            scales: {
-              x: { min: 40, max: 100, grid: { color: 'rgba(0,0,0,.04)' }, ticks: { font: { size: 10 } } },
-              y: { grid: { display: false }, ticks: { font: { size: 11, weight: '600' } } }
+          options: {
+            responsive:true, maintainAspectRatio:false,
+            plugins:{ legend:{display:false}, tooltip:{callbacks:{label:function(c){return ' Score: '+c.raw;}}}},
+            scales:{
+              x:{ grid:{display:false}, ticks:{font:{size:8}, maxRotation:35,
+                color: function(ctx){ return aiSorted[ctx.index].c.indexOf('Turkey')>-1 ? '#007C91' : '#8385A8'; }}},
+              y:{ min:40, max:100, grid:{color:'rgba(0,0,0,.04)'}, ticks:{font:{size:9}}}
             }
-          })
+          }
         });
       }
     }
