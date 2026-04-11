@@ -3762,86 +3762,69 @@
 
     /* ── OET Charts ── */
     if (panelId === 'oet') {
-      var G = '#00A651', N = '#14167A', O = '#F47920', T = '#007C91', P = '#7B2FBE';
+      var G='#00A651',N='#14167A',O='#F47920',T='#007C91',P='#7B2FBE';
+      function mTRY(v){ return v+'M'; }
+      var gridY={color:'rgba(0,0,0,.04)'};
+      var noGrid={display:false};
+      var sm={size:9};
 
       /* Order Status donut */
-      var os = document.getElementById('DMApp26-c-oet-status');
-      if (os) new Chart(os, {
-        type: 'doughnut',
-        data: {
-          labels: ['Invoiced', 'Open Order', 'Approved', 'Ready for Approval', 'To be Reviewed'],
-          datasets: [{ data: [522, 105, 1, 1, 1],
-            backgroundColor: [G, O, P, T, N], borderWidth: 0, hoverOffset: 6 }]
-        },
-        options: { responsive:true, maintainAspectRatio:false, cutout:'62%',
-          plugins:{ legend:{ display:false } }
-        }
-      });
+      var os=document.getElementById('DMApp26-c-oet-status');
+      if(os) new Chart(os,{type:'doughnut',data:{
+        labels:['Invoiced','Open Order','Approved','Ready for Approval','To be Reviewed'],
+        datasets:[{data:[522,105,1,1,1],backgroundColor:[G,O,P,T,N],borderWidth:0,hoverOffset:6}]
+      },options:{responsive:true,maintainAspectRatio:false,cutout:'62%',plugins:{legend:{display:false}}}});
 
-      /* Orders by Region donut */
-      var or2 = document.getElementById('DMApp26-c-oet-region');
-      if (or2) new Chart(or2, {
-        type: 'doughnut',
-        data: {
-          labels: ['Aegean','Marmara','MED','South','Black Sea','Central Anatolia','GAP'],
-          datasets: [{ data: [196, 155, 80, 80, 75, 21, 18],
-            backgroundColor: [O, G, T, N, '#E63946', P, '#F5C518'], borderWidth: 0, hoverOffset: 6 }]
-        },
-        options: { responsive:true, maintainAspectRatio:false, cutout:'55%',
-          plugins:{ legend:{ position:'right', labels:{ font:{size:9}, boxWidth:8, padding:5 } } }
-        }
-      });
+      /* Region donut */
+      var or2=document.getElementById('DMApp26-c-oet-region');
+      if(or2) new Chart(or2,{type:'doughnut',data:{
+        labels:['Aegean','Marmara','MED','South','Black Sea','Central Anatolia','GAP'],
+        datasets:[{data:[196,155,80,80,75,21,18],backgroundColor:[O,G,T,N,'#E63946',P,'#F5C518'],borderWidth:0,hoverOffset:6}]
+      },options:{responsive:true,maintainAspectRatio:false,cutout:'55%',
+        plugins:{legend:{position:'right',labels:{font:sm,boxWidth:8,padding:5}}}}});
 
-      /* Top Products horizontal bar */
-      var op = document.getElementById('DMApp26-c-oet-products');
-      if (op) new Chart(op, {
-        type: 'bar', indexAxis: 'y',
-        data: {
-          labels: ['SEQUESTRENE FE 25KG','ZZ-CUPROCOL 12x1L','FUSILADE FORTE 12X1L','GHIBLI 4X5L','ISABION 20L','AXIAL 050 EC 12X1L','SWITCH 62.5WG'],
-          datasets: [{ label: 'M TRY', data: [159.5, 60.6, 55.6, 49.2, 47.6, 45.5, 43.3],
-            backgroundColor: [N, N, T, T, G, G, O], borderRadius: 4 }]
-        },
-        options: { responsive:true, maintainAspectRatio:false,
-          plugins:{ legend:{display:false} },
-          scales:{ x:{ grid:{color:'rgba(0,0,0,.04)'}, ticks:{callback:function(v){return v+'M'}, font:{size:9}} },
-                   y:{ grid:{display:false}, ticks:{font:{size:9}} } }
+      /* Top Products */
+      var op=document.getElementById('DMApp26-c-oet-products');
+      if(op) new Chart(op,{type:'bar',data:{
+        labels:['SEQUESTRENE','ZZ-CUPROCOL','FUSILADE','GHIBLI','ISABION','AXIAL 050','SWITCH 62.5'],
+        datasets:[{label:'M TRY',data:[159.5,60.6,55.6,49.2,47.6,45.5,43.3],
+          backgroundColor:[N,N,T,T,G,G,O],borderRadius:5}]
+      },options:{responsive:true,maintainAspectRatio:false,
+        plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.raw+'M TRY';}}}},
+        scales:{
+          x:{grid:noGrid,ticks:{font:sm,maxRotation:30}},
+          y:{grid:gridY,ticks:{callback:mTRY,font:sm}}
         }
-      });
+      }});
 
-      /* Top Customers bar */
-      var oc = document.getElementById('DMApp26-c-oet-customers');
-      if (oc) new Chart(oc, {
-        type: 'bar', indexAxis: 'y',
-        data: {
-          labels: ['EKİCİOĞLU TARIM','GAPAGRO CHEMICALS','ADA ÇADIR SAAT TAR','ALFA TOHUM TARIM','EKİN ZİR SAN','REFORM GRUP G TAR','FAN AGRO ZİRAAT','TARSET ZİRAAT'],
-          datasets: [{ label: 'M TRY', data: [249, 225, 146, 96, 95, 81, 52, 48],
-            backgroundColor: [N,'rgba(20,22,122,.8)','rgba(20,22,122,.7)','rgba(0,124,145,.8)',T,'rgba(0,124,145,.65)','rgba(0,166,81,.7)',G], borderRadius: 4 }]
-        },
-        options: { responsive:true, maintainAspectRatio:false,
-          plugins:{ legend:{display:false} },
-          scales:{ x:{ grid:{color:'rgba(0,0,0,.04)'}, ticks:{callback:function(v){return v+'M'}, font:{size:9}} },
-                   y:{ grid:{display:false}, ticks:{font:{size:9}} } }
+      /* Top Customers */
+      var oc=document.getElementById('DMApp26-c-oet-customers');
+      if(oc) new Chart(oc,{type:'bar',data:{
+        labels:['EKİCİOĞLU','GAPAGRO','ADA ÇADIR','ALFA TOHUM','EKİN ZİR','REFORM GRUP','FAN AGRO','TARSET'],
+        datasets:[{label:'M TRY',data:[249,225,146,96,95,81,52,48],
+          backgroundColor:[N,'rgba(20,22,122,.8)','rgba(20,22,122,.65)',T,T,'rgba(0,124,145,.65)',G,'rgba(0,166,81,.7)'],borderRadius:5}]
+      },options:{responsive:true,maintainAspectRatio:false,
+        plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.raw+'M TRY';}}}},
+        scales:{
+          x:{grid:noGrid,ticks:{font:sm,maxRotation:30}},
+          y:{grid:gridY,ticks:{callback:mTRY,font:sm}}
         }
-      });
+      }});
 
-      /* Sales by Rep bar */
-      var orep = document.getElementById('DMApp26-c-oet-reps');
-      if (orep) new Chart(orep, {
-        type: 'bar', indexAxis: 'y',
-        data: {
-          labels: ['Ahmet Yücel','Fatih Çömez','Cihan Yılmaz','İzzet Yaman','Ufuk Kurt','Süphan Ürküt','Kamil Gök','Özgün Kayalar','Anıl Koç','Veli Demir'],
-          datasets: [{ label: 'M TRY', data: [361.8, 272.1, 157.8, 123, 98, 96.1, 83.6, 82.7, 82, 66.1],
-            backgroundColor: function(ctx){ var v=ctx.raw; return v>=300?N:v>=150?T:v>=100?G:O; },
-            borderRadius: 4 }]
-        },
-        options: { responsive:true, maintainAspectRatio:false,
-          plugins:{ legend:{display:false} },
-          scales:{ x:{ grid:{color:'rgba(0,0,0,.04)'}, ticks:{callback:function(v){return v+'M'}, font:{size:9}} },
-                   y:{ grid:{display:false}, ticks:{font:{size:9}} } }
+      /* Sales by Rep */
+      var orep=document.getElementById('DMApp26-c-oet-reps');
+      if(orep) new Chart(orep,{type:'bar',data:{
+        labels:['A.Yücel','F.Çömez','C.Yılmaz','İ.Yaman','U.Kurt','S.Ürküt','K.Gök','Ö.Kayalar','A.Koç','V.Demir'],
+        datasets:[{label:'M TRY',data:[361.8,272.1,157.8,123,98,96.1,83.6,82.7,82,66.1],
+          backgroundColor:[N,N,T,T,G,G,O,O,'rgba(244,121,32,.7)','rgba(244,121,32,.6)'],borderRadius:5}]
+      },options:{responsive:true,maintainAspectRatio:false,
+        plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.raw+'M TRY';}}}},
+        scales:{
+          x:{grid:noGrid,ticks:{font:sm,maxRotation:30}},
+          y:{grid:gridY,ticks:{callback:mTRY,font:sm}}
         }
-      });
+      }});
     }
-
   } /* end buildCharts */
 
   /* ── INIT ── */
