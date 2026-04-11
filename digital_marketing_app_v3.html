@@ -1248,6 +1248,17 @@
         <span>Awards &amp; Wins</span>
         <span class="DMApp26-ni-badge">★</span>
       </div>
+      <div class="DMApp26-sb-group">CRM</div>
+      <div class="DMApp26-ni" data-panel="crm" onclick="DMApp26.go(this)">
+        <span class="DMApp26-ni-ic">📡</span>
+        <span>CRM Dashboard</span>
+        <span class="DMApp26-ni-badge">Live</span>
+      </div>
+      <div class="DMApp26-ni" data-panel="oet" onclick="DMApp26.go(this)">
+        <span class="DMApp26-ni-ic">🛒</span>
+        <span>OET Dashboard</span>
+        <span class="DMApp26-ni-badge">Live</span>
+      </div>
 </nav>
     <div class="DMApp26-sb-foot">
       <div class="DMApp26-int-badge">Internal Use Only</div>
@@ -2503,6 +2514,529 @@
         </div>
       
 
+
+      </div><!-- fix-awards -->
+      <!-- ══════════════════════════════════════
+           PANEL: CRM DASHBOARD
+      ══════════════════════════════════════ -->
+      <div class="DMApp26-panel" id="DMApp26-panel-crm">
+
+        <!-- Hero -->
+        <div class="DMApp26-sh">
+          <div class="DMApp26-sh-ey">Salesforce · AME/BA Dashboard · As of April 10, 2026</div>
+          <h2>CRM Dashboard<br>Türkiye CP</h2>
+          <p>Active users, grower data, activities, consents and opportunities — live from Salesforce</p>
+        </div>
+
+        <!-- ── TOP KPI ROW 1 ── -->
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:10px">
+          <div style="background:var(--da-teal,#007C91);border-radius:var(--da-r,10px);padding:18px 16px;position:relative;overflow:hidden">
+            <div style="position:absolute;right:10px;bottom:6px;font-size:32px;opacity:.09">👥</div>
+            <div style="font-size:32px;font-weight:800;color:white;line-height:1">124</div>
+            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:rgba(255,255,255,.6);margin-top:5px">TR Active Users</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:2px">All BUs · SFDC</div>
+          </div>
+          <div style="background:var(--da-navy,#14167A);border-radius:var(--da-r,10px);padding:18px 16px;position:relative;overflow:hidden">
+            <div style="position:absolute;right:10px;bottom:6px;font-size:32px;opacity:.09">🔐</div>
+            <div style="font-size:32px;font-weight:800;color:white;line-height:1">88</div>
+            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:rgba(255,255,255,.6);margin-top:5px">Login Freq · Last 30 Days</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:2px">Active engagement</div>
+          </div>
+          <div style="background:var(--da-navy,#14167A);border-radius:var(--da-r,10px);padding:18px 16px;position:relative;overflow:hidden">
+            <div style="position:absolute;right:10px;bottom:6px;font-size:32px;opacity:.09">📅</div>
+            <div style="font-size:32px;font-weight:800;color:white;line-height:1">22</div>
+            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:rgba(255,255,255,.6);margin-top:5px">Login Freq · Daily</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:2px">Daily active users</div>
+          </div>
+          <div style="background:var(--da-green,#00A651);border-radius:var(--da-r,10px);padding:18px 16px;position:relative;overflow:hidden">
+            <div style="position:absolute;right:10px;bottom:6px;font-size:32px;opacity:.09">🌱</div>
+            <div style="font-size:32px;font-weight:800;color:white;line-height:1">1,160</div>
+            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:rgba(255,255,255,.6);margin-top:5px">Growers Created CFY</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:2px">Total grower records</div>
+          </div>
+        </div>
+
+        <!-- ── TOP KPI ROW 2 ── -->
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px">
+          <div style="background:var(--da-orange,#F47920);border-radius:var(--da-r,10px);padding:18px 16px;position:relative;overflow:hidden">
+            <div style="position:absolute;right:10px;bottom:6px;font-size:32px;opacity:.09">🎯</div>
+            <div style="font-size:32px;font-weight:800;color:white;line-height:1">37</div>
+            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:rgba(255,255,255,.6);margin-top:5px">CP Opportunities CFY</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:2px">Current fiscal year</div>
+          </div>
+          <div style="background:var(--da-green,#00A651);border-radius:var(--da-r,10px);padding:18px 16px;position:relative;overflow:hidden">
+            <div style="position:absolute;right:10px;bottom:6px;font-size:32px;opacity:.09">👨‍🌾</div>
+            <div style="font-size:32px;font-weight:800;color:white;line-height:1">60,339</div>
+            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:rgba(255,255,255,.6);margin-top:5px">All Active Growers</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:2px">Total active grower base</div>
+          </div>
+          <div style="background:var(--da-teal,#007C91);border-radius:var(--da-r,10px);padding:18px 16px;position:relative;overflow:hidden">
+            <div style="position:absolute;right:10px;bottom:6px;font-size:32px;opacity:.09">📋</div>
+            <div style="font-size:32px;font-weight:800;color:white;line-height:1">1,067</div>
+            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:rgba(255,255,255,.6);margin-top:5px">All Activities CFY</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:2px">Field + digital activities</div>
+          </div>
+          <div style="background:var(--da-navy,#14167A);border-radius:var(--da-r,10px);padding:18px 16px;position:relative;overflow:hidden">
+            <div style="position:absolute;right:10px;bottom:6px;font-size:32px;opacity:.09">📊</div>
+            <div style="font-size:32px;font-weight:800;color:white;line-height:1">1,336</div>
+            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:rgba(255,255,255,.6);margin-top:5px">Promoter Activities 2026</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:2px">YTD total</div>
+          </div>
+        </div>
+
+        <!-- ── ROW 3: Activities + Consents KPIs ── -->
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px">
+          <div style="background:var(--da-navyL,#EEEEF8);border:1px solid rgba(20,22,122,.15);border-radius:var(--da-r,10px);padding:16px 14px">
+            <div style="font-size:26px;font-weight:800;color:var(--da-navy,#14167A);line-height:1">5,607</div>
+            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--da-text3,#8385A8);margin-top:4px">Promoter Activities 2025</div>
+            <div style="font-size:11px;color:var(--da-text3,#8385A8);margin-top:2px">Full year baseline</div>
+          </div>
+          <div style="background:var(--da-greenL,#E6F5EE);border:1px solid rgba(0,166,81,.2);border-radius:var(--da-r,10px);padding:16px 14px">
+            <div style="font-size:26px;font-weight:800;color:var(--da-green2,#007A3C);line-height:1">870</div>
+            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--da-text3,#8385A8);margin-top:4px">TSR Activities 2026</div>
+            <div style="font-size:11px;color:var(--da-text3,#8385A8);margin-top:2px">YTD TSR CP total</div>
+          </div>
+          <div style="background:var(--da-navyL,#EEEEF8);border:1px solid rgba(20,22,122,.15);border-radius:var(--da-r,10px);padding:16px 14px">
+            <div style="font-size:26px;font-weight:800;color:var(--da-navy,#14167A);line-height:1">3,360</div>
+            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--da-text3,#8385A8);margin-top:4px">TSR Activities 2025</div>
+            <div style="font-size:11px;color:var(--da-text3,#8385A8);margin-top:2px">Full year baseline</div>
+          </div>
+          <div style="background:var(--da-orangeL,#FEF1E6);border:1px solid rgba(244,121,32,.2);border-radius:var(--da-r,10px);padding:16px 14px">
+            <div style="font-size:26px;font-weight:800;color:var(--da-orange,#F47920);line-height:1">1,950</div>
+            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--da-text3,#8385A8);margin-top:4px">Total Consents Obtained</div>
+            <div style="font-size:11px;color:var(--da-text3,#8385A8);margin-top:2px">KVKK / ETK / İYS</div>
+          </div>
+        </div>
+
+        <!-- ── CHARTS ROW ── -->
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:14px">
+
+          <!-- Growers Created Monthly -->
+          <div class="DMApp26-card">
+            <div class="DMApp26-ct">Growers Created CFY — Monthly</div>
+            <div style="position:relative;height:200px"><canvas id="DMApp26-c-crm-growers"></canvas></div>
+          </div>
+
+          <!-- TSR vs Promoter Activities 2026 Monthly -->
+          <div class="DMApp26-card">
+            <div class="DMApp26-ct">Activities 2026 — TSR vs Promoters</div>
+            <div style="position:relative;height:200px"><canvas id="DMApp26-c-crm-activities"></canvas></div>
+          </div>
+
+          <!-- Consents Monthly -->
+          <div class="DMApp26-card">
+            <div class="DMApp26-ct">Consents Obtained — Monthly Trend</div>
+            <div style="position:relative;height:200px"><canvas id="DMApp26-c-crm-consents"></canvas></div>
+          </div>
+
+        </div>
+
+        <!-- ── BOTTOM ROW ── -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+
+          <!-- Active Users by BU -->
+          <div class="DMApp26-card">
+            <div class="DMApp26-ct">Active Users by BU</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:var(--da-bg,#F4F5FC);border-radius:8px">
+                <span style="font-size:12px;font-weight:600;color:var(--da-text2,#3A3C6E)">CP: CP</span>
+                <span style="font-size:14px;font-weight:800;color:var(--da-navy,#14167A)">25</span>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:var(--da-bg,#F4F5FC);border-radius:8px">
+                <span style="font-size:12px;font-weight:600;color:var(--da-text2,#3A3C6E)">SE: Seeds</span>
+                <span style="font-size:14px;font-weight:800;color:var(--da-navy,#14167A)">13</span>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:var(--da-bg,#F4F5FC);border-radius:8px">
+                <span style="font-size:12px;font-weight:600;color:var(--da-text2,#3A3C6E)">VE: Vegetable</span>
+                <span style="font-size:14px;font-weight:800;color:var(--da-navy,#14167A)">5</span>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:var(--da-bg,#F4F5FC);border-radius:8px">
+                <span style="font-size:12px;font-weight:600;color:var(--da-text2,#3A3C6E)">CP + SE</span>
+                <span style="font-size:14px;font-weight:800;color:var(--da-navy,#14167A)">3</span>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:var(--da-bg,#F4F5FC);border-radius:8px">
+                <span style="font-size:12px;font-weight:600;color:var(--da-text2,#3A3C6E)">BO: Biologicals</span>
+                <span style="font-size:14px;font-weight:800;color:var(--da-navy,#14167A)">2</span>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:var(--da-bg,#F4F5FC);border-radius:8px">
+                <span style="font-size:12px;font-weight:600;color:var(--da-text2,#3A3C6E)">SC: Seedcare</span>
+                <span style="font-size:14px;font-weight:800;color:var(--da-navy,#14167A)">1</span>
+              </div>
+            </div>
+            <div style="margin-top:10px;position:relative;height:160px"><canvas id="DMApp26-c-crm-users"></canvas></div>
+          </div>
+
+          <!-- Top Reps by Activities -->
+          <div class="DMApp26-card">
+            <div class="DMApp26-ct">Top Field Reps — Activities CFY</div>
+            <div style="display:flex;flex-direction:column;gap:7px;margin-top:8px">
+              <div style="display:flex;align-items:center;gap:10px">
+                <span style="font-size:11px;font-weight:600;color:var(--da-text2,#3A3C6E);width:140px;flex-shrink:0">Fatih Yılmaz</span>
+                <div style="flex:1;height:8px;background:var(--da-border,#E2E4F0);border-radius:4px;overflow:hidden"><div style="height:100%;background:linear-gradient(90deg,var(--da-green2,#007A3C),var(--da-green,#00A651));border-radius:4px;width:100%"></div></div>
+                <span style="font-size:12px;font-weight:800;color:var(--da-navy,#14167A);width:30px;text-align:right">146</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <span style="font-size:11px;font-weight:600;color:var(--da-text2,#3A3C6E);width:140px;flex-shrink:0">Ezgi Doğru</span>
+                <div style="flex:1;height:8px;background:var(--da-border,#E2E4F0);border-radius:4px;overflow:hidden"><div style="height:100%;background:linear-gradient(90deg,var(--da-green2,#007A3C),var(--da-green,#00A651));border-radius:4px;width:76%"></div></div>
+                <span style="font-size:12px;font-weight:800;color:var(--da-navy,#14167A);width:30px;text-align:right">111</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <span style="font-size:11px;font-weight:600;color:var(--da-text2,#3A3C6E);width:140px;flex-shrink:0">Miraç Berre Balıkçı</span>
+                <div style="flex:1;height:8px;background:var(--da-border,#E2E4F0);border-radius:4px;overflow:hidden"><div style="height:100%;background:linear-gradient(90deg,var(--da-green2,#007A3C),var(--da-green,#00A651));border-radius:4px;width:69%"></div></div>
+                <span style="font-size:12px;font-weight:800;color:var(--da-navy,#14167A);width:30px;text-align:right">101</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <span style="font-size:11px;font-weight:600;color:var(--da-text2,#3A3C6E);width:140px;flex-shrink:0">Ali Galipoğlu</span>
+                <div style="flex:1;height:8px;background:var(--da-border,#E2E4F0);border-radius:4px;overflow:hidden"><div style="height:100%;background:linear-gradient(90deg,var(--da-teal,#007C91),#00a8c8);border-radius:4px;width:66%"></div></div>
+                <span style="font-size:12px;font-weight:800;color:var(--da-navy,#14167A);width:30px;text-align:right">96</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <span style="font-size:11px;font-weight:600;color:var(--da-text2,#3A3C6E);width:140px;flex-shrink:0">Batuhan Büyükavcu</span>
+                <div style="flex:1;height:8px;background:var(--da-border,#E2E4F0);border-radius:4px;overflow:hidden"><div style="height:100%;background:linear-gradient(90deg,var(--da-teal,#007C91),#00a8c8);border-radius:4px;width:45%"></div></div>
+                <span style="font-size:12px;font-weight:800;color:var(--da-navy,#14167A);width:30px;text-align:right">65</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <span style="font-size:11px;font-weight:600;color:var(--da-text2,#3A3C6E);width:140px;flex-shrink:0">Ertuğrul Yılmaz</span>
+                <div style="flex:1;height:8px;background:var(--da-border,#E2E4F0);border-radius:4px;overflow:hidden"><div style="height:100%;background:linear-gradient(90deg,var(--da-teal,#007C91),#00a8c8);border-radius:4px;width:42%"></div></div>
+                <span style="font-size:12px;font-weight:800;color:var(--da-navy,#14167A);width:30px;text-align:right">62</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <span style="font-size:11px;font-weight:600;color:var(--da-text2,#3A3C6E);width:140px;flex-shrink:0">Zülküf Arslan</span>
+                <div style="flex:1;height:8px;background:var(--da-border,#E2E4F0);border-radius:4px;overflow:hidden"><div style="height:100%;background:linear-gradient(90deg,var(--da-navy,#14167A),#2830c0);border-radius:4px;width:38%"></div></div>
+                <span style="font-size:12px;font-weight:800;color:var(--da-navy,#14167A);width:30px;text-align:right">55</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px">
+                <span style="font-size:11px;font-weight:600;color:var(--da-text2,#3A3C6E);width:140px;flex-shrink:0">Ahmet Yücel</span>
+                <div style="flex:1;height:8px;background:var(--da-border,#E2E4F0);border-radius:4px;overflow:hidden"><div style="height:100%;background:linear-gradient(90deg,var(--da-navy,#14167A),#2830c0);border-radius:4px;width:37%"></div></div>
+                <span style="font-size:12px;font-weight:800;color:var(--da-navy,#14167A);width:30px;text-align:right">54</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ── ACTIVITY TYPE BREAKDOWN ── -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+
+          <!-- Activity Types -->
+          <div class="DMApp26-card">
+            <div class="DMApp26-ct">Activity Types — CFY Breakdown</div>
+            <div style="position:relative;height:200px;margin-top:8px"><canvas id="DMApp26-c-crm-acttypes"></canvas></div>
+          </div>
+
+          <!-- Opportunities by Region -->
+          <div class="DMApp26-card">
+            <div class="DMApp26-ct">CP Opportunities by Region</div>
+            <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px">
+              <div style="padding:14px 16px;background:var(--da-navyL,#EEEEF8);border-radius:var(--da-r,10px);border-left:3px solid var(--da-navy,#14167A)">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+                  <span style="font-size:12px;font-weight:700;color:var(--da-navy,#14167A)">TR CP Central Anatolia</span>
+                  <span style="font-size:14px;font-weight:800;color:var(--da-navy,#14167A)">234 units</span>
+                </div>
+                <div style="display:flex;gap:16px">
+                  <div><span style="font-size:10px;color:var(--da-text3,#8385A8)">Actual</span> <span style="font-size:12px;font-weight:700;color:var(--da-green2,#007A3C)">234</span></div>
+                  <div><span style="font-size:10px;color:var(--da-text3,#8385A8)">Planned</span> <span style="font-size:12px;font-weight:700;color:var(--da-text2,#3A3C6E)">417</span></div>
+                  <div><span style="font-size:10px;color:var(--da-text3,#8385A8)">Deals</span> <span style="font-size:12px;font-weight:700;color:var(--da-text2,#3A3C6E)">9</span></div>
+                </div>
+              </div>
+              <div style="padding:14px 16px;background:var(--da-tealL,#E0F5F8);border-radius:var(--da-r,10px);border-left:3px solid var(--da-teal,#007C91)">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+                  <span style="font-size:12px;font-weight:700;color:var(--da-teal,#007C91)">TR CP South</span>
+                  <span style="font-size:14px;font-weight:800;color:var(--da-teal,#007C91)">153 units</span>
+                </div>
+                <div style="display:flex;gap:16px">
+                  <div><span style="font-size:10px;color:var(--da-text3,#8385A8)">Actual</span> <span style="font-size:12px;font-weight:700;color:var(--da-green2,#007A3C)">153</span></div>
+                  <div><span style="font-size:10px;color:var(--da-text3,#8385A8)">Planned</span> <span style="font-size:12px;font-weight:700;color:var(--da-text2,#3A3C6E)">130</span></div>
+                  <div><span style="font-size:10px;color:var(--da-text3,#8385A8)">Deals</span> <span style="font-size:12px;font-weight:700;color:var(--da-text2,#3A3C6E)">3</span></div>
+                </div>
+              </div>
+              <div style="padding:14px 16px;background:var(--da-greenL,#E6F5EE);border-radius:var(--da-r,10px);border-left:3px solid var(--da-green,#00A651)">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+                  <span style="font-size:12px;font-weight:700;color:var(--da-green2,#007A3C)">TR CP Aegean</span>
+                  <span style="font-size:14px;font-weight:800;color:var(--da-green2,#007A3C)">0 units</span>
+                </div>
+                <div style="display:flex;gap:16px">
+                  <div><span style="font-size:10px;color:var(--da-text3,#8385A8)">Actual</span> <span style="font-size:12px;font-weight:700;color:var(--da-text2,#3A3C6E)">0</span></div>
+                  <div><span style="font-size:10px;color:var(--da-text3,#8385A8)">Planned</span> <span style="font-size:12px;font-weight:700;color:var(--da-text2,#3A3C6E)">0</span></div>
+                  <div><span style="font-size:10px;color:var(--da-text3,#8385A8)">Deals</span> <span style="font-size:12px;font-weight:700;color:var(--da-text2,#3A3C6E)">1</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      
+
+
+      </div><!-- fix-crm -->
+      <!-- ══════════════════════════════════════
+           PANEL: OET DASHBOARD
+      ══════════════════════════════════════ -->
+      <div class="DMApp26-panel" id="DMApp26-panel-oet">
+
+        <div class="DMApp26-sh">
+          <div class="DMApp26-sh-ey">Order Entry Tool · Salesforce · As of April 10, 2026</div>
+          <h2>OET Dashboard 2026</h2>
+          <p>Total sales, order status, top products, customers and reps — live from Salesforce</p>
+        </div>
+
+        <!-- ── HERO KPIs ── -->
+        <!-- Row 1: 4 equal KPI cards -->
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:10px">
+
+          <!-- Total Sales -->
+          <div style="background:linear-gradient(135deg,#0C0E5A,#1E21A0);border-radius:var(--da-r2,16px);padding:20px 22px;position:relative;overflow:hidden">
+            <div style="position:absolute;right:-10px;top:-10px;width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,rgba(0,166,81,.2) 0%,transparent 65%)"></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px">
+              <div style="font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)">Total Sales · Excl. VAT</div>
+              <div style="font-size:9px;font-weight:600;color:rgba(255,255,255,.3);background:rgba(255,255,255,.08);padding:2px 7px;border-radius:10px;white-space:nowrap">Jan–Apr 10, 2026</div>
+            </div>
+            <div style="font-size:22px;font-weight:800;color:white;line-height:1.1;letter-spacing:-.01em;word-break:break-all">1,754,878,789</div>
+            <div style="font-size:10px;color:rgba(255,255,255,.35);margin-top:3px;margin-bottom:10px">TRY · CFY All Orders</div>
+            <div style="height:1px;background:rgba(255,255,255,.1);margin-bottom:10px"></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+              <div style="background:rgba(0,166,81,.15);border-radius:6px;padding:6px 8px">
+                <div style="font-size:12px;font-weight:800;color:#4ADE80">1,628M</div>
+                <div style="font-size:9px;color:rgba(255,255,255,.35);margin-top:1px;text-transform:uppercase;letter-spacing:.06em">Invoiced</div>
+              </div>
+              <div style="background:rgba(244,121,32,.15);border-radius:6px;padding:6px 8px">
+                <div style="font-size:12px;font-weight:800;color:#FDA76A">126.8M</div>
+                <div style="font-size:9px;color:rgba(255,255,255,.35);margin-top:1px;text-transform:uppercase;letter-spacing:.06em">Open Orders</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quantity + Products -->
+          <div style="background:var(--da-teal,#007C91);border-radius:var(--da-r2,16px);padding:20px 22px;position:relative;overflow:hidden">
+            <div style="position:absolute;right:-10px;top:-10px;width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.07) 0%,transparent 65%)"></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px">
+              <div style="font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)">Total Quantity Sold</div>
+              <div style="font-size:9px;font-weight:600;color:rgba(255,255,255,.3);background:rgba(255,255,255,.08);padding:2px 7px;border-radius:10px">CFY</div>
+            </div>
+            <div style="font-size:36px;font-weight:800;color:white;line-height:1">1.6M</div>
+            <div style="font-size:10px;color:rgba(255,255,255,.35);margin-top:3px;margin-bottom:10px">units · all products</div>
+            <div style="height:1px;background:rgba(255,255,255,.1);margin-bottom:10px"></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+              <div style="background:rgba(255,255,255,.1);border-radius:6px;padding:6px 8px">
+                <div style="font-size:12px;font-weight:800;color:white">9,731</div>
+                <div style="font-size:9px;color:rgba(255,255,255,.35);margin-top:1px;text-transform:uppercase;letter-spacing:.06em">Line Items</div>
+              </div>
+              <div style="background:rgba(255,255,255,.1);border-radius:6px;padding:6px 8px">
+                <div style="font-size:12px;font-weight:800;color:white">~160</div>
+                <div style="font-size:9px;color:rgba(255,255,255,.35);margin-top:1px;text-transform:uppercase;letter-spacing:.06em">Products</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Orders breakdown -->
+          <div style="background:var(--da-green,#00A651);border-radius:var(--da-r2,16px);padding:20px 22px;position:relative;overflow:hidden">
+            <div style="position:absolute;right:-10px;top:-10px;width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.07) 0%,transparent 65%)"></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px">
+              <div style="font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)">Total Orders CFY</div>
+              <div style="font-size:9px;font-weight:600;color:rgba(255,255,255,.3);background:rgba(255,255,255,.08);padding:2px 7px;border-radius:10px">7 regions</div>
+            </div>
+            <div style="font-size:36px;font-weight:800;color:white;line-height:1">635</div>
+            <div style="font-size:10px;color:rgba(255,255,255,.35);margin-top:3px;margin-bottom:10px">orders · all regions</div>
+            <div style="height:1px;background:rgba(255,255,255,.1);margin-bottom:10px"></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+              <div style="background:rgba(255,255,255,.15);border-radius:6px;padding:6px 8px">
+                <div style="font-size:12px;font-weight:800;color:white">510</div>
+                <div style="font-size:9px;color:rgba(255,255,255,.35);margin-top:1px;text-transform:uppercase;letter-spacing:.06em">Invoiced</div>
+              </div>
+              <div style="background:rgba(255,255,255,.1);border-radius:6px;padding:6px 8px">
+                <div style="font-size:12px;font-weight:800;color:white">105</div>
+                <div style="font-size:9px;color:rgba(255,255,255,.35);margin-top:1px;text-transform:uppercase;letter-spacing:.06em">Open</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Invoice rate + top region -->
+          <div style="background:var(--da-orange,#F47920);border-radius:var(--da-r2,16px);padding:20px 22px;position:relative;overflow:hidden">
+            <div style="position:absolute;right:-10px;top:-10px;width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.07) 0%,transparent 65%)"></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px">
+              <div style="font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)">Invoice Rate</div>
+              <div style="font-size:9px;font-weight:600;color:rgba(255,255,255,.3);background:rgba(255,255,255,.08);padding:2px 7px;border-radius:10px">510 / 635</div>
+            </div>
+            <div style="font-size:36px;font-weight:800;color:white;line-height:1">82%</div>
+            <div style="font-size:10px;color:rgba(255,255,255,.35);margin-top:3px;margin-bottom:10px">orders invoiced CFY</div>
+            <div style="height:1px;background:rgba(255,255,255,.1);margin-bottom:10px"></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+              <div style="background:rgba(255,255,255,.15);border-radius:6px;padding:6px 8px">
+                <div style="font-size:12px;font-weight:800;color:white">#1 Aegean</div>
+                <div style="font-size:9px;color:rgba(255,255,255,.35);margin-top:1px;text-transform:uppercase;letter-spacing:.06em">196 orders</div>
+              </div>
+              <div style="background:rgba(255,255,255,.1);border-radius:6px;padding:6px 8px">
+                <div style="font-size:12px;font-weight:800;color:white">7 Regions</div>
+                <div style="font-size:9px;color:rgba(255,255,255,.35);margin-top:1px;text-transform:uppercase;letter-spacing:.06em">All covered</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ── CHARTS ROW 1 ── -->
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px">
+
+          <!-- Order Status donut -->
+          <div class="DMApp26-card">
+            <div class="DMApp26-ct">Order Status</div>
+            <div style="position:relative;height:210px"><canvas id="DMApp26-c-oet-status"></canvas></div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px">
+              <div style="display:flex;align-items:center;gap:4px;font-size:11px;color:var(--da-text2,#3A3C6E)"><span style="width:8px;height:8px;border-radius:50%;background:var(--da-green,#00A651);flex-shrink:0"></span>Invoiced: <strong>522</strong></div>
+              <div style="display:flex;align-items:center;gap:4px;font-size:11px;color:var(--da-text2,#3A3C6E)"><span style="width:8px;height:8px;border-radius:50%;background:var(--da-orange,#F47920);flex-shrink:0"></span>Open Order: <strong>105</strong></div>
+              <div style="display:flex;align-items:center;gap:4px;font-size:11px;color:var(--da-text2,#3A3C6E)"><span style="width:8px;height:8px;border-radius:50%;background:#7B2FBE;flex-shrink:0"></span>Other: <strong>8</strong></div>
+            </div>
+          </div>
+
+          <!-- Orders by Region donut -->
+          <div class="DMApp26-card">
+            <div class="DMApp26-ct">Order Count by Region</div>
+            <div style="position:relative;height:210px"><canvas id="DMApp26-c-oet-region"></canvas></div>
+          </div>
+
+          <!-- Top Products by Sales bar -->
+          <div class="DMApp26-card">
+            <div class="DMApp26-ct">Top 7 Products — Sales (M TRY)</div>
+            <div style="position:relative;height:220px"><canvas id="DMApp26-c-oet-products"></canvas></div>
+          </div>
+
+        </div>
+
+        <!-- ── CHARTS ROW 2 ── -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+
+          <!-- Top customers -->
+          <div class="DMApp26-card">
+            <div class="DMApp26-ct">Top 8 Customers — Net Sales (M TRY)</div>
+            <div style="position:relative;height:230px"><canvas id="DMApp26-c-oet-customers"></canvas></div>
+          </div>
+
+          <!-- Sales by Rep -->
+          <div class="DMApp26-card">
+            <div class="DMApp26-ct">Sales by Rep (M TRY)</div>
+            <div style="position:relative;height:230px"><canvas id="DMApp26-c-oet-reps"></canvas></div>
+          </div>
+
+        </div>
+
+        <!-- ── ORDER CREATORS + TOP PRODUCTS TABLE ── -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+
+          <!-- Orders by Rep -->
+          <div class="DMApp26-card" style="display:flex;flex-direction:column">
+            <div class="DMApp26-ct">Top Order Creators — Order Count</div>
+            <div style="display:flex;flex-direction:column;gap:7px;margin-top:10px;flex:1">
+              <div style="display:flex;align-items:center;gap:8px">
+                <span style="font-size:11px;color:var(--da-text2,#3A3C6E);width:130px;flex-shrink:0">İzzet Yaman</span>
+                <div style="flex:1;height:7px;background:var(--da-border,#E2E4F0);border-radius:4px;overflow:hidden"><div style="width:100%;height:100%;background:linear-gradient(90deg,#007A3C,#00A651);border-radius:4px"></div></div>
+                <span style="font-size:12px;font-weight:800;color:var(--da-navy,#14167A);width:26px;text-align:right">75</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px">
+                <span style="font-size:11px;color:var(--da-text2,#3A3C6E);width:130px;flex-shrink:0">Kamil Gök</span>
+                <div style="flex:1;height:7px;background:var(--da-border,#E2E4F0);border-radius:4px;overflow:hidden"><div style="width:99%;height:100%;background:linear-gradient(90deg,#007A3C,#00A651);border-radius:4px"></div></div>
+                <span style="font-size:12px;font-weight:800;color:var(--da-navy,#14167A);width:26px;text-align:right">74</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px">
+                <span style="font-size:11px;color:var(--da-text2,#3A3C6E);width:130px;flex-shrink:0">Veli Demir</span>
+                <div style="flex:1;height:7px;background:var(--da-border,#E2E4F0);border-radius:4px;overflow:hidden"><div style="width:79%;height:100%;background:linear-gradient(90deg,#007C91,#00a8c8);border-radius:4px"></div></div>
+                <span style="font-size:12px;font-weight:800;color:var(--da-navy,#14167A);width:26px;text-align:right">59</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px">
+                <span style="font-size:11px;color:var(--da-text2,#3A3C6E);width:130px;flex-shrink:0">Ali Galipoğlu</span>
+                <div style="flex:1;height:7px;background:var(--da-border,#E2E4F0);border-radius:4px;overflow:hidden"><div style="width:77%;height:100%;background:linear-gradient(90deg,#007C91,#00a8c8);border-radius:4px"></div></div>
+                <span style="font-size:12px;font-weight:800;color:var(--da-navy,#14167A);width:26px;text-align:right">58</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px">
+                <span style="font-size:11px;color:var(--da-text2,#3A3C6E);width:130px;flex-shrink:0">Özgün Kayalar</span>
+                <div style="flex:1;height:7px;background:var(--da-border,#E2E4F0);border-radius:4px;overflow:hidden"><div style="width:71%;height:100%;background:linear-gradient(90deg,#14167A,#2830c0);border-radius:4px"></div></div>
+                <span style="font-size:12px;font-weight:800;color:var(--da-navy,#14167A);width:26px;text-align:right">53</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px">
+                <span style="font-size:11px;color:var(--da-text2,#3A3C6E);width:130px;flex-shrink:0">Ahmet Yücel</span>
+                <div style="flex:1;height:7px;background:var(--da-border,#E2E4F0);border-radius:4px;overflow:hidden"><div style="width:56%;height:100%;background:linear-gradient(90deg,#14167A,#2830c0);border-radius:4px"></div></div>
+                <span style="font-size:12px;font-weight:800;color:var(--da-navy,#14167A);width:26px;text-align:right">42</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px">
+                <span style="font-size:11px;color:var(--da-text2,#3A3C6E);width:130px;flex-shrink:0">Atalay Türel</span>
+                <div style="flex:1;height:7px;background:var(--da-border,#E2E4F0);border-radius:4px;overflow:hidden"><div style="width:55%;height:100%;background:linear-gradient(90deg,#14167A,#2830c0);border-radius:4px"></div></div>
+                <span style="font-size:12px;font-weight:800;color:var(--da-navy,#14167A);width:26px;text-align:right">41</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px">
+                <span style="font-size:11px;color:var(--da-text2,#3A3C6E);width:130px;flex-shrink:0">Kerem Sinanoğlu</span>
+                <div style="flex:1;height:7px;background:var(--da-border,#E2E4F0);border-radius:4px;overflow:hidden"><div style="width:41%;height:100%;background:linear-gradient(90deg,#14167A,#2830c0);border-radius:4px"></div></div>
+                <span style="font-size:12px;font-weight:800;color:var(--da-navy,#14167A);width:26px;text-align:right">31</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px">
+                <span style="font-size:11px;color:var(--da-text2,#3A3C6E);width:130px;flex-shrink:0">Emre Kıroğlan</span>
+                <div style="flex:1;height:7px;background:var(--da-border,#E2E4F0);border-radius:4px;overflow:hidden"><div style="width:40%;height:100%;background:linear-gradient(90deg,#C0650A,#F47920);border-radius:4px"></div></div>
+                <span style="font-size:12px;font-weight:800;color:var(--da-navy,#14167A);width:26px;text-align:right">30</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px">
+                <span style="font-size:11px;color:var(--da-text2,#3A3C6E);width:130px;flex-shrink:0">Muhammed Bay</span>
+                <div style="flex:1;height:7px;background:var(--da-border,#E2E4F0);border-radius:4px;overflow:hidden"><div style="width:40%;height:100%;background:linear-gradient(90deg,#C0650A,#F47920);border-radius:4px"></div></div>
+                <span style="font-size:12px;font-weight:800;color:var(--da-navy,#14167A);width:26px;text-align:right">30</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px">
+                <span style="font-size:11px;color:var(--da-text2,#3A3C6E);width:130px;flex-shrink:0">İbrahim Fidan</span>
+                <div style="flex:1;height:7px;background:var(--da-border,#E2E4F0);border-radius:4px;overflow:hidden"><div style="width:31%;height:100%;background:linear-gradient(90deg,#C0650A,#F47920);border-radius:4px"></div></div>
+                <span style="font-size:12px;font-weight:800;color:var(--da-navy,#14167A);width:26px;text-align:right">23</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px">
+                <span style="font-size:11px;color:var(--da-text2,#3A3C6E);width:130px;flex-shrink:0">Harun Çolak</span>
+                <div style="flex:1;height:7px;background:var(--da-border,#E2E4F0);border-radius:4px;overflow:hidden"><div style="width:29%;height:100%;background:linear-gradient(90deg,#C0650A,#F47920);border-radius:4px"></div></div>
+                <span style="font-size:12px;font-weight:800;color:var(--da-navy,#14167A);width:26px;text-align:right">22</span>
+              </div>
+            </div>
+            <!-- Payment Terms breakdown -->
+            <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--da-border,#E2E4F0)">
+              <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--da-text3,#8385A8);margin-bottom:8px">Payment Terms — Net Sales</div>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px">
+                <div style="background:var(--da-navyL,#EEEEF8);border-radius:8px;padding:8px 10px">
+                  <div style="font-size:13px;font-weight:800;color:var(--da-navy,#14167A)">840.7M</div>
+                  <div style="font-size:9px;font-weight:700;color:var(--da-text3,#8385A8);margin-top:2px">Immediate</div>
+                  <div style="font-size:9px;color:var(--da-text3,#8385A8)">1,467</div>
+                </div>
+                <div style="background:var(--da-greenL,#E6F5EE);border-radius:8px;padding:8px 10px">
+                  <div style="font-size:13px;font-weight:800;color:var(--da-green2,#007A3C)">627.1M</div>
+                  <div style="font-size:9px;font-weight:700;color:var(--da-text3,#8385A8);margin-top:2px">5-Day</div>
+                  <div style="font-size:9px;color:var(--da-text3,#8385A8)">563</div>
+                </div>
+                <div style="background:var(--da-tealL,#E0F5F8);border-radius:8px;padding:8px 10px">
+                  <div style="font-size:13px;font-weight:800;color:var(--da-teal,#007C91)">95.1M</div>
+                  <div style="font-size:9px;font-weight:700;color:var(--da-text3,#8385A8);margin-top:2px">7-Day</div>
+                  <div style="font-size:9px;color:var(--da-text3,#8385A8)">565</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Top Products Table -->
+          <div class="DMApp26-card">
+            <div class="DMApp26-ct">Top Products — Sales Summary</div>
+            <div class="DMApp26-tw DMApp26-mt">
+              <table>
+                <thead><tr><th>Product</th><th>Qty</th><th>Net Sales (TRY)</th></tr></thead>
+                <tbody>
+                  <tr><td>SEQUESTRENE FE 25 KG TRA</td><td>12,694</td><td class="DMApp26-hig">159.5M</td></tr>
+                  <tr><td>ZZ-CUPROCOL 12x1 L TRA</td><td>49,812</td><td class="DMApp26-hi">60.6M</td></tr>
+                  <tr><td>FUSILADE FORTE 12X1 L TRS</td><td>49,428</td><td class="DMApp26-hi">55.6M</td></tr>
+                  <tr><td>GHIBLI 4X5 L TRA</td><td>6,024</td><td class="DMApp26-hi">49.2M</td></tr>
+                  <tr><td>ISABION 20 L TRA</td><td>5,658</td><td>47.6M</td></tr>
+                  <tr><td>AXIAL 050 EC 12X1 L TRA</td><td>34,380</td><td>45.5M</td></tr>
+                  <tr><td>DYNASTY CST 125 FS</td><td>22,460</td><td>43.6M</td></tr>
+                  <tr><td>SWITCH 62.5 WG 12x400 G TRA</td><td>17,712</td><td>43.3M</td></tr>
+                  <tr><td>THIOVIT JET 20 KG TRA</td><td>16,404</td><td>34.7M</td></tr>
+                  <tr><td>QUADRIS MAXX 12X1 L TRA</td><td>21,396</td><td>34.5M</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+      
+
     </div><!-- /DMApp26-cnt -->
   </div><!-- /DMApp26-main -->
 </div><!-- /#DMApp26 -->
@@ -2576,6 +3110,14 @@
     awards: {
       t: 'Awards & Key Wins',
       c: 'MaSE Digital in DNA · Creative Spark · Sector Firsts · 2025–2026'
+    },
+    crm: {
+      t: 'CRM Dashboard',
+      c: 'AME/BA Dashboard · Salesforce · As of April 10, 2026'
+    },
+    oet: {
+      t: 'OET Dashboard 2026',
+      c: 'Order Entry Tool · Salesforce · As of April 10, 2026'
     }
   };
 
@@ -2970,6 +3512,171 @@
         });
       }
     }
+    /* ── CRM Charts ── */
+    if (panelId === 'crm') {
+      var G = '#00A651', N = '#14167A', O = '#F47920', T = '#007C91', B = '#0066CC';
+
+      /* Growers Created Monthly */
+      var c1 = document.getElementById('DMApp26-c-crm-growers');
+      if (c1) new Chart(c1, {
+        type: 'bar',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr'],
+          datasets: [{ label: 'Growers Created', data: [24, 27, 28, 9],
+            backgroundColor: [G, G, G, 'rgba(0,166,81,.4)'], borderRadius: 6 }]
+        },
+        options: { responsive:true, maintainAspectRatio:false,
+          plugins:{ legend:{display:false} },
+          scales:{ x:{grid:{display:false}}, y:{grid:{color:'rgba(0,0,0,.04)'}, ticks:{stepSize:5}} }
+        }
+      });
+
+      /* TSR vs Promoter Activities */
+      var c2 = document.getElementById('DMApp26-c-crm-activities');
+      if (c2) new Chart(c2, {
+        type: 'bar',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr'],
+          datasets: [
+            { label: 'TSR', data: [274, 286, 271, 41], backgroundColor: 'rgba(20,22,122,.7)', borderRadius: 4 },
+            { label: 'Promoters', data: [355, 449, 473, 67], backgroundColor: 'rgba(0,166,81,.7)', borderRadius: 4 }
+          ]
+        },
+        options: { responsive:true, maintainAspectRatio:false,
+          plugins:{ legend:{ position:'top', labels:{font:{size:10},boxWidth:8,padding:8} } },
+          scales:{ x:{grid:{display:false}}, y:{grid:{color:'rgba(0,0,0,.04)'}} }
+        }
+      });
+
+      /* Consents Monthly */
+      var c3 = document.getElementById('DMApp26-c-crm-consents');
+      if (c3) new Chart(c3, {
+        type: 'line',
+        data: {
+          labels: ['May','Jun','Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr'],
+          datasets: [{ label: 'Consents', data: [24,24,23,21,20,21,21,18,18,19,43,38],
+            borderColor: O, backgroundColor: 'rgba(244,121,32,.1)',
+            tension: 0.4, fill: true, pointRadius: 3, pointBackgroundColor: O }]
+        },
+        options: { responsive:true, maintainAspectRatio:false,
+          plugins:{ legend:{display:false} },
+          scales:{ x:{grid:{display:false}, ticks:{font:{size:9}}}, y:{grid:{color:'rgba(0,0,0,.04)'}} }
+        }
+      });
+
+      /* Active Users by BU donut */
+      var c4 = document.getElementById('DMApp26-c-crm-users');
+      if (c4) new Chart(c4, {
+        type: 'doughnut',
+        data: {
+          labels: ['CP: CP', 'SE: Seeds', 'VE: Vegetable', 'CP+SE', 'BO: Bio', 'SC: Seedcare'],
+          datasets: [{ data: [25, 13, 5, 3, 2, 1],
+            backgroundColor: [N, G, T, O, B, '#7B2FBE'], borderWidth: 0, hoverOffset: 6 }]
+        },
+        options: { responsive:true, maintainAspectRatio:false, cutout:'60%',
+          plugins:{ legend:{ position:'right', labels:{font:{size:10},boxWidth:8,padding:6} } }
+        }
+      });
+
+      /* Activity Types horizontal bar */
+      var c5 = document.getElementById('DMApp26-c-crm-acttypes');
+      if (c5) new Chart(c5, {
+        type: 'bar', indexAxis: 'y',
+        data: {
+          labels: ['F2F Opp. Gen.', 'Yüz yüze fırsat', 'Tarla ziyareti', 'Phone Opp.', 'By phone', 'Diğer', 'F2F Other', 'Takip'],
+          datasets: [{ label: 'Count', data: [454, 255, 54, 32, 31, 30, 25, 22],
+            backgroundColor: [G,G,T,N,N,O,O,'rgba(20,22,122,.4)'], borderRadius: 4 }]
+        },
+        options: { responsive:true, maintainAspectRatio:false,
+          plugins:{ legend:{display:false} },
+          scales:{ x:{grid:{color:'rgba(0,0,0,.04)'}, ticks:{font:{size:9}}},
+                   y:{grid:{display:false}, ticks:{font:{size:9}}} }
+        }
+      });
+    }
+
+    /* ── OET Charts ── */
+    if (panelId === 'oet') {
+      var G = '#00A651', N = '#14167A', O = '#F47920', T = '#007C91', P = '#7B2FBE';
+
+      /* Order Status donut */
+      var os = document.getElementById('DMApp26-c-oet-status');
+      if (os) new Chart(os, {
+        type: 'doughnut',
+        data: {
+          labels: ['Invoiced', 'Open Order', 'Approved', 'Ready for Approval', 'To be Reviewed'],
+          datasets: [{ data: [522, 105, 1, 1, 1],
+            backgroundColor: [G, O, P, T, N], borderWidth: 0, hoverOffset: 6 }]
+        },
+        options: { responsive:true, maintainAspectRatio:false, cutout:'62%',
+          plugins:{ legend:{ display:false } }
+        }
+      });
+
+      /* Orders by Region donut */
+      var or2 = document.getElementById('DMApp26-c-oet-region');
+      if (or2) new Chart(or2, {
+        type: 'doughnut',
+        data: {
+          labels: ['Aegean','Marmara','MED','South','Black Sea','Central Anatolia','GAP'],
+          datasets: [{ data: [196, 155, 80, 80, 75, 21, 18],
+            backgroundColor: [O, G, T, N, '#E63946', P, '#F5C518'], borderWidth: 0, hoverOffset: 6 }]
+        },
+        options: { responsive:true, maintainAspectRatio:false, cutout:'55%',
+          plugins:{ legend:{ position:'right', labels:{ font:{size:9}, boxWidth:8, padding:5 } } }
+        }
+      });
+
+      /* Top Products horizontal bar */
+      var op = document.getElementById('DMApp26-c-oet-products');
+      if (op) new Chart(op, {
+        type: 'bar', indexAxis: 'y',
+        data: {
+          labels: ['SEQUESTRENE FE 25KG','ZZ-CUPROCOL 12x1L','FUSILADE FORTE 12X1L','GHIBLI 4X5L','ISABION 20L','AXIAL 050 EC 12X1L','SWITCH 62.5WG'],
+          datasets: [{ label: 'M TRY', data: [159.5, 60.6, 55.6, 49.2, 47.6, 45.5, 43.3],
+            backgroundColor: [N, N, T, T, G, G, O], borderRadius: 4 }]
+        },
+        options: { responsive:true, maintainAspectRatio:false,
+          plugins:{ legend:{display:false} },
+          scales:{ x:{ grid:{color:'rgba(0,0,0,.04)'}, ticks:{callback:function(v){return v+'M'}, font:{size:9}} },
+                   y:{ grid:{display:false}, ticks:{font:{size:9}} } }
+        }
+      });
+
+      /* Top Customers bar */
+      var oc = document.getElementById('DMApp26-c-oet-customers');
+      if (oc) new Chart(oc, {
+        type: 'bar', indexAxis: 'y',
+        data: {
+          labels: ['EKİCİOĞLU TARIM','GAPAGRO CHEMICALS','ADA ÇADIR SAAT TAR','ALFA TOHUM TARIM','EKİN ZİR SAN','REFORM GRUP G TAR','FAN AGRO ZİRAAT','TARSET ZİRAAT'],
+          datasets: [{ label: 'M TRY', data: [249, 225, 146, 96, 95, 81, 52, 48],
+            backgroundColor: [N,'rgba(20,22,122,.8)','rgba(20,22,122,.7)','rgba(0,124,145,.8)',T,'rgba(0,124,145,.65)','rgba(0,166,81,.7)',G], borderRadius: 4 }]
+        },
+        options: { responsive:true, maintainAspectRatio:false,
+          plugins:{ legend:{display:false} },
+          scales:{ x:{ grid:{color:'rgba(0,0,0,.04)'}, ticks:{callback:function(v){return v+'M'}, font:{size:9}} },
+                   y:{ grid:{display:false}, ticks:{font:{size:9}} } }
+        }
+      });
+
+      /* Sales by Rep bar */
+      var orep = document.getElementById('DMApp26-c-oet-reps');
+      if (orep) new Chart(orep, {
+        type: 'bar', indexAxis: 'y',
+        data: {
+          labels: ['Ahmet Yücel','Fatih Çömez','Cihan Yılmaz','İzzet Yaman','Ufuk Kurt','Süphan Ürküt','Kamil Gök','Özgün Kayalar','Anıl Koç','Veli Demir'],
+          datasets: [{ label: 'M TRY', data: [361.8, 272.1, 157.8, 123, 98, 96.1, 83.6, 82.7, 82, 66.1],
+            backgroundColor: function(ctx){ var v=ctx.raw; return v>=300?N:v>=150?T:v>=100?G:O; },
+            borderRadius: 4 }]
+        },
+        options: { responsive:true, maintainAspectRatio:false,
+          plugins:{ legend:{display:false} },
+          scales:{ x:{ grid:{color:'rgba(0,0,0,.04)'}, ticks:{callback:function(v){return v+'M'}, font:{size:9}} },
+                   y:{ grid:{display:false}, ticks:{font:{size:9}} } }
+        }
+      });
+    }
+
   } /* end buildCharts */
 
   /* ── INIT ── */
@@ -3145,7 +3852,7 @@ var DMApp26Search = (function() {
 })();
 
 /* ── KEYBOARD SHORTCUTS ── */
-var DA_PANEL_ORDER = ['overview','npi','bio','magris','strategy','ot','roadmap','dmmm','seo','awards'];
+var DA_PANEL_ORDER = ['overview','npi','bio','magris','strategy','ot','roadmap','dmmm','seo','awards','crm','oet'];
 var DA_CURRENT_IDX = 0;
 
 function daGetCurrentPanel() {
